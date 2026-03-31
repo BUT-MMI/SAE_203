@@ -2,7 +2,6 @@
 // Configuration de la base de données
 $host = 'localhost';
 $dbname = 'sae203';
-<<<<<<< HEAD
 $user = 'root';// Modifiez si nécessaire
 $pass = '';// Modifiez si nécessaire
 

@@ -1,35 +1,43 @@
-<!--
-Page d'accueil avec :
- 1. Un menu avec trois onglets : genre, nouveautés et mieux notés. L'onglet 
-    genre contient un sous-menu avec tous les genres disponibles. Le menu 
-    contient aussi un bouton pour ajouter un film (ajouter_film.php)
- 2. La liste de tous les films. Chaque film est un lien cliquable vers la page
-    film.php.
--->
-
+<?php
+require_once 'include/db.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 	<meta charset="utf-8">
-	<title></title>
+	<title>Films - MMI Arles</title>
 	<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-<?php 
-/* Importez le fichier « entete.php » dans le dossier « include » pour la barre de 
- * menu.
- */
 
-/*
- * Ensuite, faites une requête SQL pour recupérer tous les films et les afficher.
- * Voici un exemple :
- */
-?>
-	<div>
-		<a href="film.php?id=1">
-			<img src="https://upload.wikimedia.org/wikipedia/en/5/52/Dune_Part_Two_poster.jpeg"><br>
-			Dune, deuxième partie - 2024
-		</a>
-	</div>
+<body>
+	<?php
+	/* Importez le fichier « entete.php » dans le dossier « include » pour la barre de menu. */
+	include 'include/entete.php';
+
+	/*
+	 * Récupération de tous les films de la base de données.
+	 */
+	try {
+		$sql = "SELECT id, titre, annee, affiche FROM films ORDER BY titre ASC";
+		$query = $db->query($sql);
+		$films = $query->fetchAll();
+	} catch (PDOException $e) {
+		echo "Erreur lors de la récupération des films : " . $e->getMessage();
+		$films = [];
+	}
+	?>
+	<main style="display: flex; flex-wrap: wrap; justify-content: center;">
+		<?php foreach ($films as $film): ?>
+			<div class="film" style="text-align: center; margin: 20px; flex-basis: 300px;">
+				<a href="film.php?id=<?= htmlspecialchars($film['id']) ?>">
+					<img src="<?= htmlspecialchars($film['affiche']) ?>" alt="<?= htmlspecialchars($film['titre']) ?>"
+						style="width: 200px; height: auto;"><br>
+					<?= htmlspecialchars($film['titre']) ?> - <?= htmlspecialchars($film['annee']) ?>
+				</a>
+			</div>
+		<?php endforeach; ?>
+	</main>
 </body>
+
 </html>

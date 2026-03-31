@@ -2,8 +2,8 @@
 // Configuration de la base de données
 $host = 'localhost';
 $dbname = 'sae203';
-$user = 'root';
-$pass = 'Ulysse321'; // Modifiez si nécessaire
+$user = 'root';// Modifiez si nécessaire
+$pass = '';// Modifiez si nécessaire
 
 try {
     // Connexion à la base de données avec PDO

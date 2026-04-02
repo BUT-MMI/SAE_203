@@ -1,8 +1,6 @@
-<!--
-Page d'une catégorie. La structure est semblable à la page index.php, mais vous 
-devez filtrer les films à afficher. Utilisez la méthode get et une requête SQL
-pour filtrer ces films.
--->
+<?php
+require_once 'include/db.php';
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -13,9 +11,7 @@ pour filtrer ces films.
 </head>
 <body>
 <?php 
-/* Importez le fichier « entete.php » dans le dossier « include » pour la barre 
- * de menu.
- */
+    include 'include/entete.php';
 
 /* Ensuite, utilisez la méthode get pour savoir quelle catégorie il faut afficher :
  * 1. Si c'est les nouveautés, faites une requête SQL qui affiche les N derniers

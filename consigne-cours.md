@@ -1,4 +1,4 @@
-CONSIGNE PROJET :
+# CONSIGNE PROJET :
 
 Le but de ce projet est de créer un catalogue de films en ligne, à l'image d'AlloCiné ou d'IMDb. Le site web comportera les pages suivantes.
 
@@ -84,7 +84,7 @@ L'affichage, sur la vignette d'un film (page d'accueil ou page de catégorie), d
 Un bouton permettant d'afficher ou de masquer la liste des commentaires sur la page d'un film.
 La possibilité pour les utilisateurs de liker les commentaires. Chaque commentaire affiche le nombre de likes, et la page d'accueil présente les dix commentaires les plus likés.
 
-Cours PHP :
+# Cours PHP :
 
 Exemple minimal
 <?php
@@ -1608,7 +1608,7 @@ Modifier une entrée. se connecter à la base de données. faire la requête SQL
 
 Supprimer une entrée. se connecter à la base de données. faire la requête SQL préparée. $dbh = new PDO ( 'mysql:host=localhost;dbname=a25012345;charset=utf8' , 'a25012345' , 'secret' ); $sth = $dbh -> prepare ( 'DELETE FROM films WHERE title=:nom_film' ); $values = array ( 'nom_film' => $_GET [ 'film' ]); $sth -> execute ( $values );
 
-COURS HTML :
+# COURS HTML :
 
 Module
 Intégration web
@@ -2141,4 +2141,4 @@ Symbole Entité Description
 © &copy; Copyright
 ® &reg; Marque enregistrée
 
-COURS CSS : 
+# COURS CSS : 

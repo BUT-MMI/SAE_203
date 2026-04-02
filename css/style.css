@@ -5,3 +5,69 @@
 .menu li {
   display: inline;
 }
+
+ @font-face {
+  font-family: "bw";
+  src: url("https://robindelaporte.fr/codepen/play/BwModelicaSS01-ExtraBold.woff") format("woff");
+}
+
+body {
+  background: #F5EFE1;
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  background: #ffd470;
+  margin: 0;
+}
+
+/* Le bouton suivant à été intégré depuis cette page https://www.sliderrevolution.com/resources/css-3d-buttons/ */
+.Ajout2Film, .Ajout2Film::before {
+  border: 2px solid #DED0B0;
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 250px;
+  min-height: 80px;
+  font-family: bw;
+}
+
+.Ajout2Film {
+  background: #EEE2C7;
+  color: #5E4B21;
+  font-family: 'Lora', serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+  position: top;
+  transform: skewX(20deg);
+  display: grid;
+  place-items: center;
+}
+
+.Ajout2Film::before {
+  content: attr(data-label);
+  background: #F5EFE1;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: -1rem; 
+  left: 1rem;
+  z-index: -1;
+  transition: all 0.5s ease;
+}
+
+.Ajout2Film:hover::before {
+  top: -2px; 
+  left: -2px;
+}
+
+.Ajout2Film:focus {
+  outline: none;
+}

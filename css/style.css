@@ -45,7 +45,7 @@ body {
   font-family: 'Lora', serif;
   font-size: 1.3rem;
   letter-spacing: 0.5px;
-  position: top;
+  position: relative;
   transform: skewX(20deg);
   display: grid;
   place-items: center;
@@ -72,3 +72,50 @@ body {
 .Ajout2Film:focus {
   outline: none;
 }
+
+.grille-films {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.carte-film {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  max-width: 250px;
+  text-align: center;
+}
+
+.carte-film a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carte-film img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.infos-carte {
+  margin-top: 10px;
+}
+
+.titre-film {
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.annee-film {
+  color: #666;
+  margin: 5px 0;
+}
+

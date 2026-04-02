@@ -39,7 +39,7 @@ POUR MIEUX COLLER AU COURS
                     <?php if (!empty($row['affiche'])) { ?>
                         <img src="<?php echo $row['affiche']; ?>" alt="Affiche de <?php echo $row['titre']; ?>">
                     <?php } else { ?>
-                        <img src="https://freesvg.org/img/Placeholder.png" alt="Pas d'affiche">
+                        <img src="img\image-innacessible.png" alt="Pas d'affiche">
                     <?php } ?>
                     <div class="infos-carte">
                         <p class="titre-film"><?php echo $row['titre']; ?></p>

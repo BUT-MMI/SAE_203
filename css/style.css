@@ -49,6 +49,7 @@ body {
   transform: skewX(20deg);
   display: grid;
   place-items: center;
+  float: right;
 }
 
 .Ajout2Film::before {

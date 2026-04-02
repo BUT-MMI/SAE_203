@@ -23,6 +23,7 @@ include 'include/entete.php';
     <?php echo htmlspecialchars($film['titre']) . ' <br> ' . htmlspecialchars($film['annee']) . ' <br><br>'; ?>
 
   <form method="post" action="ajouter_commentaire.php">
+    Ajouter un commentaire : <br>
     Nom : <input type="text" name="nom"><br>
     Note : <input type="number" name="note"><br>
     Message : <textarea name="message"></textarea><br>

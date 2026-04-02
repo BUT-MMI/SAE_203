@@ -1,4 +1,4 @@
-CONSIGNE PROJET :
+# CONSIGNE PROJET :
 
 Le but de ce projet est de créer un catalogue de films en ligne, à l'image d'AlloCiné ou d'IMDb. Le site web comportera les pages suivantes.
 
@@ -84,7 +84,7 @@ L'affichage, sur la vignette d'un film (page d'accueil ou page de catégorie), d
 Un bouton permettant d'afficher ou de masquer la liste des commentaires sur la page d'un film.
 La possibilité pour les utilisateurs de liker les commentaires. Chaque commentaire affiche le nombre de likes, et la page d'accueil présente les dix commentaires les plus likés.
 
-Cours PHP :
+# Cours PHP :
 
 Exemple minimal
 <?php
@@ -1468,8 +1468,8 @@ Formulaire → validation → traitement
 Vérifier que les valeurs sont cohérentes :. if ( strlen ( $_POST [ 'mdp' ]) >= 8 ) { // faire quelque chose } else { echo 'Mot de passe trop court. <a href="formulaire.html">Retour</a>' ; }
 
 
-COURS HTML :
+# COURS HTML :
 
 
 
-COURS CSS : 
+# COURS CSS : 

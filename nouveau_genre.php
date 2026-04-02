@@ -1,20 +1,26 @@
-<?php
-require_once 'include/db.php';
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 	<meta charset="utf-8">
-	<title></title>
+	<title>Crousti Movies - Ajouter un genre</title>
 	<link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-<?php 
-include 'include/entete.php';
-?>
-	<form method="post" action="ajouter_genre.php">
-		...
-	</form>
-</body>
-</html>
+	<?php
+	include('include/entete.php');
+	?>
+
+	<section class="section-formulaire">
+		<h2>Ajouter un nouveau genre</h2>
+		<form method="post" action="ajouter_genre.php">
+			<div class="formulaire-groupe">
+				<label for="libelle">Nom du genre :</label>
+				<input type="text" id="libelle" name="libelle" placeholder="Ex : Aventure">
+			</div>
+			<input type="submit" class="btn-valider" value="Ajouter le genre">
+		</form>
+	</section>
+
+	<?php include('include/pied.php'); ?>

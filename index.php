@@ -18,14 +18,11 @@ require_once 'include/db.php';
 	/*
 	 * Récupération de tous les films de la base de données.
 	 */
-	try {
-		$sql = "SELECT idFilm, titre, annee, affiche FROM film ORDER BY titre ASC";
-		$query = $db->query($sql);
-		$films = $query->fetchAll();
-	} catch (PDOException $e) {
-		echo "Erreur lors de la récupération des films : " . $e->getMessage();
-		$films = [];
-	}
+
+	$sth = $dbh->prepare('SELECT idFilm, titre, annee, affiche FROM film ORDER BY titre ASC'); // préparer la requête SQL
+	$sth->execute();
+	$films = $sth->fetchAll();
+	
 	?>
 	<main style="display: flex; flex-wrap: wrap; justify-content: center;">
 		<?php foreach ($films as $film): ?>

@@ -13,23 +13,15 @@ require_once 'include/db.php';
 <?php 
     include 'include/entete.php';
 
-/* Ensuite, utilisez la méthode get pour savoir quelle catégorie il faut afficher :
+
+
+
  * 1. Si c'est les nouveautés, faites une requête SQL qui affiche les N derniers
  *    films ajoutés
  * 2. Sinon, mais que c'est les mieux notés, faites une requête SQL qui affiche 
  *    les N films les mieux notés
  * 3. Sinon, alors c'est un genre. Dans ce cas, faites une requête SQL qui prend 
  *    tous les films dans cette catégorie.
- *
- * Par exemple :
- * if ($_GET['cat'] == 'nouveaux') {
- *	  afficher les nouveautés
- * } elseif (les mieux notés) {
- *	  afficher les mieux notés
- * } else {
- *	  afficher les films du genre $_GET['cat']
- * }
- */
 ?>
 </body>
 </html>

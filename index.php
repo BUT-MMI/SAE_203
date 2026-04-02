@@ -19,7 +19,7 @@ require_once 'include/db.php';
 	 * Récupération de tous les films de la base de données.
 	 */
 
-	$sth = $dbh->prepare('SELECT idFilm, titre, annee, affiche FROM film ORDER BY titre ASC'); // préparer la requête SQL
+	$sth = $dbh->prepare('SELECT idfilm, titre, annee, affiche FROM film ORDER BY titre ASC'); // préparer la requête SQL
 	$sth->execute();
 	$films = $sth->fetchAll();
 	
@@ -27,7 +27,7 @@ require_once 'include/db.php';
 	<main style="display: flex; flex-wrap: wrap; justify-content: center;">
 		<?php foreach ($films as $film): ?>
 			<div class="film" style="text-align: center; margin: 20px; flex-basis: 300px;">
-				<a href="film.php?id=<?= htmlspecialchars($film['idFilm']) ?>">
+				<a href="film.php?id=<?= htmlspecialchars($film['idfilm']) ?>">
 					<img src="<?= htmlspecialchars($film['affiche']) ?>" alt="<?= htmlspecialchars($film['titre']) ?>"
 						style="width: 200px; height: auto;"><br>
 					<?= htmlspecialchars($film['titre']) ?> - <?= htmlspecialchars($film['annee']) ?>

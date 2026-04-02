@@ -20,7 +20,7 @@ include 'include/entete.php';
 ?>
     <img src="<?= htmlspecialchars($film['affiche']) ?>" alt="affiche"
 						style="width: 200px; height: auto;"><br>
-    <?php echo htmlspecialchars($film['titre']) . ' <br> ' . htmlspecialchars($film['annee']); ?>
+    <?php echo htmlspecialchars($film['titre']) . ' <br> ' . htmlspecialchars($film['annee']) . ' <br><br>'; ?>
 
   <form method="post" action="ajouter_commentaire.php">
     Nom : <input type="text" name="nom"><br>

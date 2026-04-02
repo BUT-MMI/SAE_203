@@ -2,6 +2,6 @@
 
 <footer> <p>© 2026 Crousti Movies. Tous droits réservés.</p> </footer>
 <body>
-    <p> NIGGA </p>
+    <p> a GOUGOU and a GAGA. </p>
     </body>
 </html>

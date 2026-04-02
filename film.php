@@ -1,8 +1,6 @@
-<!--
-Page d'un film. En plus de la barre de menu, il faut afficher les informations du
-film qui se trouvent sur la base de données, la liste de commentaires et un 
-formulaire pour laisser un nouveau commentaire avec une note.
--->
+<?php
+require_once 'include/db.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,9 +10,7 @@ formulaire pour laisser un nouveau commentaire avec une note.
 </head>
 <body>
 <?php 
-/* Importez le fichier « entete.php » dans le dossier « include » pour la barre 
- * de menu.
- */
+include 'include/entete.php';
 
 /* Utilisez la méthode get pour savoir quel film afficher. Vous devrez utiliser
  * la valeur de $_GET['id'] pour faire une requête SQL.

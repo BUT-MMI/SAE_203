@@ -23,6 +23,7 @@ require_once 'include/db.php';
 	$sth->execute();
 	$films = $sth->fetchAll();
 	
+	
 	?>
 	<main style="display: flex; flex-wrap: wrap; justify-content: center;">
 		<?php foreach ($films as $film): ?>

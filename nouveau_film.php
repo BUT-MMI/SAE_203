@@ -1,9 +1,6 @@
-<!--
-Page avec le formulaire pour ajouter un nouveau film. Cette page ne contient que
-la barre de menu et un long formulaire pour entrer les données.
-Remarquez que, pour ajouter l'affiche et la bande annonce, il faudra fournir
-une adresse URL.
--->
+<?php
+require_once 'include/db.php';
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -14,11 +11,7 @@ une adresse URL.
 </head>
 <body>
 <?php 
-/* Importez le fichier « entete.php » dans le dossier « include » pour la barre de 
- * menu.
- *
- * Voici un exemple incomplet pour le formulaire :
- */
+include 'include/entete.php';
 ?>
 	<form method="post" action="ajouter_film.php">
 		...<br>

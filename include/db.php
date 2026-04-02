@@ -1,24 +1,25 @@
 <?php
-// Configuration de la base de données
-$host = 'localhost';
-$dbname = 'sae203';
-$user = 'root';// Modifiez si nécessaire
-$pass = '';// Modifiez si nécessaire
-
-
+// Configuration de Supabase (PostgreSQL)
+$host = 'aws-1-eu-west-3.pooler.supabase.com';
+$port   = '5432'; 
+$dbname = 'postgres';
+$user   = 'postgres.zpdugyojedzybursowrc';
+$pass   = 'CroustyLover92I';
 
 try {
-    // Connexion à la base de données avec PDO
-    $db = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+    // Notez le changement : "pgsql:" au lieu de "mysql:"
+    $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
+    
+    $db = new PDO($dsn, $user, $pass);
 
-    // Configurer PDO pour lancer des exceptions en cas d'erreur
+    // Configuration des erreurs et du mode de récupération
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Définir le mode de récupération par défaut sur tableau associatif
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
+    // Optionnel : Forcer l'encodage UTF-8 (souvent par défaut sur PG)
+    $db->exec("SET client_encoding TO 'UTF8'");
+
 } catch (PDOException $e) {
-    // En cas d'erreur de connexion, afficher un message et arrêter le script
-    die("Erreur de connexion à la base de données : " . $e->getMessage());
+    die("Erreur de connexion à Supabase : " . $e->getMessage());
 }
 ?>

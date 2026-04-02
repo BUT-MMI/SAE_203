@@ -18,11 +18,12 @@ include 'include/entete.php';
 	$film = $sth->fetch();
 
 ?>
-    <img src="<?= htmlspecialchars($film['affiche']) ?>" alt="affiche"
+    <img src="<?= htmlspecialchars($film['affiche']) ?>" alt="image-innacessibleble.png"
 						style="width: 200px; height: auto;"><br>
     <?php echo htmlspecialchars($film['titre']) . ' <br> ' . htmlspecialchars($film['annee']) . ' <br><br>'; ?>
 
   <form method="post" action="ajouter_commentaire.php">
+    Ajouter un commentaire : <br>
     Nom : <input type="text" name="nom"><br>
     Note : <input type="number" name="note"><br>
     Message : <textarea name="message"></textarea><br>

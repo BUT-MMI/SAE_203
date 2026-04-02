@@ -6,7 +6,7 @@ require_once 'include/db.php';
 
 <head>
 	<meta charset="utf-8">
-	<title>Films - MMI Arles</title>
+	<title>Movie Crousty</title>
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -19,7 +19,7 @@ require_once 'include/db.php';
 	 * Récupération de tous les films de la base de données.
 	 */
 	try {
-		$sql = "SELECT id, titre, annee, affiche FROM films ORDER BY titre ASC";
+		$sql = "SELECT idFilm, titre, annee, affiche FROM film ORDER BY titre ASC";
 		$query = $db->query($sql);
 		$films = $query->fetchAll();
 	} catch (PDOException $e) {
@@ -30,7 +30,7 @@ require_once 'include/db.php';
 	<main style="display: flex; flex-wrap: wrap; justify-content: center;">
 		<?php foreach ($films as $film): ?>
 			<div class="film" style="text-align: center; margin: 20px; flex-basis: 300px;">
-				<a href="film.php?id=<?= htmlspecialchars($film['id']) ?>">
+				<a href="film.php?id=<?= htmlspecialchars($film['idFilm']) ?>">
 					<img src="<?= htmlspecialchars($film['affiche']) ?>" alt="<?= htmlspecialchars($film['titre']) ?>"
 						style="width: 200px; height: auto;"><br>
 					<?= htmlspecialchars($film['titre']) ?> - <?= htmlspecialchars($film['annee']) ?>

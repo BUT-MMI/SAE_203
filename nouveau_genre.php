@@ -1,8 +1,6 @@
-<!--
-Page avec le formulaire pour ajouter un nouveau genre. Cette page ne contient 
-que la barre de menu et un très petit formulaire pour entrer le nom du nouveau
-genre
--->
+<?php
+require_once 'include/db.php';
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -13,11 +11,7 @@ genre
 </head>
 <body>
 <?php 
-/* Importez le fichier « entete.php » dans le dossier « include » pour la barre de 
- * menu.
- *
- * Voici un exemple incomplet pour le formulaire :
- */
+include 'include/entete.php';
 ?>
 	<form method="post" action="ajouter_genre.php">
 		...

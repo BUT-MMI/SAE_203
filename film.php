@@ -12,21 +12,21 @@ require_once 'include/db.php';
 <?php 
 include 'include/entete.php';
 
-/* Utilisez la méthode get pour savoir quel film afficher. Vous devrez utiliser
- * la valeur de $_GET['id'] pour faire une requête SQL.
- *
- * De même, affichez tous les commentaires de ce film avec : auteur, note, commentaire,
- * bouton pour le supprimer, date, etc.
- *
- * Enfin, ajoutez un formulaire pour insérer un nouveau commentaire. Voici un
- * exemple incomplet :
- */
+  $sth = $dbh->prepare('SELECT titre, annee, affiche FROM film WHERE idfilm = :id'); // préparer la requête SQL
+  $values = array('id' => $_GET['id']);
+	$sth->execute($values);
+	$film = $sth->fetch();
+
 ?>
+    <img src="<?= htmlspecialchars($film['affiche']) ?>" alt="affiche"
+						style="width: 200px; height: auto;"><br>
+    <?php echo htmlspecialchars($film['titre']) . ' <br> ' . htmlspecialchars($film['annee']); ?>
+
   <form method="post" action="ajouter_commentaire.php">
     Nom : <input type="text" name="nom"><br>
     Note : <input type="number" name="note"><br>
     Message : <textarea name="message"></textarea><br>
-    <input type="hidden" name="id_film" value="1"> <!-- Avec PHP, donnez la bonne valeur à l'attribut value -->
+    <input type="hidden" name="id_film" value="<?= htmlspecialchars($_GET['id']) ?>"> <!-- Avec PHP, donnez la bonne valeur à l'attribut value -->
     <input type="submit" value="Envoyer">
   </form>
 </body>

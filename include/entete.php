@@ -14,5 +14,5 @@ $genres = $sth->fetchAll();
     <li><a href="categorie.php?cat=nouveaux">Nouveautés</a></li>
     <li><a href="categorie.php?cat=notes">Mieux notés</a></li>
   </ul>
-  <button class="Ajout2Film" data-label="Ajouter un film !" href="nouveau_film.php">
+  <a class="Ajout2Film" data-label="Ajouter un film !" href="nouveau_film.php" role="button"></a>
 </nav>

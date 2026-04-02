@@ -13,11 +13,6 @@ require_once 'include/db.php';
 
 <body>
 	<?php
-	/* Importez le fichier « entete.php » dans le dossier « include » pour la barre de 
-	 * menu.
-	 *
-	 * Voici un exemple incomplet pour le formulaire :
-	 */
 	include('include/entete.php');
 	?>
 

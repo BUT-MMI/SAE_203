@@ -1,41 +1,54 @@
-<?php
-require_once 'include/db.php';
-?>
+<!--
+POUR MIEUX COLLER AU COURS
+-->
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
-	<meta charset="utf-8">
-	<title>Movie Crousty</title>
-	<link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8">
+    <title>Crousti Movies - Accueil</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-	<?php
-	/* Importez le fichier « entete.php » dans le dossier « include » pour la barre de menu. */
-	include 'include/entete.php';
+    <?php
+    /* Importez le fichier « entete.php » dans le dossier « include » pour la barre de 
+     * menu.
+     */
+    include('include/entete.php');
+    ?>
 
-	/*
-	 * Récupération de tous les films de la base de données.
-	 */
+    <?php
+    /*
+     * Ensuite, faites une requête SQL pour recupérer tous les films et les afficher.
+     */
 
-	$sth = $dbh->prepare('SELECT idfilm, titre, annee, affiche FROM film ORDER BY titre ASC'); // préparer la requête SQL
-	$sth->execute();
-	$films = $sth->fetchAll();
-	
-	
-	?>
-	<main style="display: flex; flex-wrap: wrap; justify-content: center;">
-		<?php foreach ($films as $film): ?>
-			<div class="film" style="text-align: center; margin: 20px; flex-basis: 300px;">
-				<a href="film.php?id=<?= htmlspecialchars($film['idfilm']) ?>">
-					<img src="<?= htmlspecialchars($film['affiche']) ?>" alt="<?= htmlspecialchars($film['titre']) ?>"
-						style="width: 200px; height: auto;"><br>
-					<?= htmlspecialchars($film['titre']) ?> - <?= htmlspecialchars($film['annee']) ?>
-				</a>
-			</div>
-		<?php endforeach; ?>
-	</main>
-</body>
+    // On récupère tous les films avec leur genre
+    $sth = $dbh->prepare('SELECT film.*, genre.libelle FROM film JOIN genre ON film.idgenre = genre.idgenre ORDER BY film.titre');
+    $sth->execute();
+    $result = $sth->fetchAll();
+    ?>
 
-</html>
+    <h2 class="titre-section">Tous les films</h2>
+
+    <section class="grille-films">
+        <?php foreach ($result as $row) { ?>
+            <article class="carte-film">
+                <a href="film.php?id=<?php echo $row['idfilm']; ?>">
+                    <?php if (!empty($row['affiche'])) { ?>
+                        <img src="<?php echo $row['affiche']; ?>" alt="Affiche de <?php echo $row['titre']; ?>">
+                    <?php } else { ?>
+                        <img src="https://freesvg.org/img/Placeholder.png" alt="Pas d'affiche">
+                    <?php } ?>
+                    <div class="infos-carte">
+                        <p class="titre-film"><?php echo $row['titre']; ?></p>
+                        <p class="annee-film"><?php echo $row['annee']; ?></p>
+                        <p class="genre-film"><?php echo $row['libelle']; ?></p>
+                    </div>
+                </a>
+            </article>
+        <?php } ?>
+    </section>
+
+    <?php include('include/pied.php'); ?>

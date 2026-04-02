@@ -1,4 +1,4 @@
-CONSIGNE PROJET :
+# CONSIGNE PROJET :
 
 Le but de ce projet est de créer un catalogue de films en ligne, à l'image d'AlloCiné ou d'IMDb. Le site web comportera les pages suivantes.
 
@@ -84,7 +84,7 @@ L'affichage, sur la vignette d'un film (page d'accueil ou page de catégorie), d
 Un bouton permettant d'afficher ou de masquer la liste des commentaires sur la page d'un film.
 La possibilité pour les utilisateurs de liker les commentaires. Chaque commentaire affiche le nombre de likes, et la page d'accueil présente les dix commentaires les plus likés.
 
-Cours PHP :
+# Cours PHP :
 
 Exemple minimal
 <?php
@@ -1467,9 +1467,678 @@ Formulaire → validation → traitement
 
 Vérifier que les valeurs sont cohérentes :. if ( strlen ( $_POST [ 'mdp' ]) >= 8 ) { // faire quelque chose } else { echo 'Mot de passe trop court. <a href="formulaire.html">Retour</a>' ; }
 
+PHP DATABASE :
 
-COURS HTML :
+R213 – TD #1
+Développement web S2
+Aldo Gonzalez-Lorenzo
+aldo.gonzalez-lorenzo@univ-amu.fr
+Bureau C07
+phpMyAdmin
+On peut manipuler (voir, créer, modifier) une base de données avec le logiciel phpMyAdmin, au lieu d'écrire en SQL.
+
+phpMyAdmin est installé dans notre serveur web. Il est sur a-pedagoarles-mmi.aix.univ-amu.fr/phpmyadmin
+
+Exercice 1
+Importez cette base de données dans votre serveur web local
+
+Afficher le résultat
+Il suffit de parcourir le tableau (for, foreach) et afficher son contenu
+
+// ...
+echo '<ul>';
+foreach ($result as $row) {
+  echo '<li>' . $row['title'] . ' (' . $row['year'] . ')</li>'; // <li>Dune (1984)</li>
+}
+echo '</ul>';
+?>
+Exercice 2
+Faites une page qui affiche les prénoms de la table etudiants sous forme de liste à puces (<ul>)
+
+Bref
+Connexion → requête → récupération → affichage
+Deux mots-clé de PHP que vous ne maîtrisez pas : new et ->. C'est la programmation orientée objet
+Attention aux plusieurs variables : $dbh (connexion), $sth (requête), $values (variables de la requête), $result (résultat)
+Autres requêtes SQL
+Les autres requêtes SQL sont l'insertion (INSERT INTO), la modification (UPDATE) et la suppression (DELETE FROM)
+
+Utilisateurs + BDD = site web dynamique
+
+25
 
 
+Attention aux plusieurs variables : $dbh (connexion), $sth (requête), $values (variables de la requête), $result (résultat).
 
-COURS CSS : 
+Bref
+Connexion → requête → récupération → affichage
+Deux mots-clé de PHP que vous ne maîtrisez pas : new et ->. C'est la programmation orientée objet
+Attention aux plusieurs variables : $dbh (connexion), $sth (requête), $values (variables de la requête), $result (résultat)
+Modifier une entrée
+se connecter à la base de données
+faire la requête SQL préparée
+$dbh = new PDO('mysql:host=localhost;dbname=a25012345;charset=utf8', 'a25012345', 'secret');
+$sth = $dbh->prepare('UPDATE users 
+                      SET display_name = :name
+                      WHERE user_login = :login');
+$values = array('name'  => $nom,
+                'login' => $user_login);
+$sth->execute($values);
+Exercice
+Corrigez ce code :
+
+$sth = $dbh->prepare('UPDATE users 
+                      SET password = ' . $_POST['mdp'] . 
+                      ' WHERE user_login = ' . $_POST['login']);
+$sth->execute();
+Choisir  
+Supprimer une entrée
+se connecter à la base de données
+faire la requête SQL préparée
+$dbh = new PDO('mysql:host=localhost;dbname=a25012345;charset=utf8', 'a25012345', 'secret');
+$sth = $dbh->prepare('DELETE FROM films 
+                      WHERE title=:nom_film');
+$values = array('nom_film' => $_GET['film']);
+$sth->execute($values);
+Exercice
+Dans la validation d'un formulaire, vous devez vérifier si l'adresse email est déjà utilisée. Comment vous faites ?
+
+Exercice 1
+Importez cette base de données dans votre serveur web local
+
+Afficher le résultat
+Il suffit de parcourir le tableau (for, foreach) et afficher son contenu
+
+// ...
+echo '<ul>';
+foreach ($result as $row) {
+  echo '<li>' . $row['title'] . ' (' . $row['year'] . ')</li>'; // <li>Dune (1984)</li>
+}
+echo '</ul>';
+?>
+Exercice 2
+Faites une page qui affiche les prénoms de la table etudiants sous forme de liste à puces (<ul>)
+
+Bref
+Connexion → requête → récupération → affichage
+Deux mots-clé de PHP que vous ne maîtrisez pas : new et ->. C'est la programmation orientée objet
+Attention aux plusieurs variables : $dbh (connexion), $sth (requête), $values (variables de la requête), $result (résultat)
+Exemple :
+
+$dbh = new PDO('mysql:host=localhost;dbname=a25012345;charset=utf8', 'a25012345', 'secret');
+$sth = $dbh->prepare('INSERT INTO users(user_login, user_mail, display_name) 
+                      VALUES(:login, :email, :name)');
+$values = array('login' => $nom, 
+                'email' => $adresse, 
+                'name'  => $nom_prenom);
+$sth->execute($values);
+Exercice 3
+Ajoutez un formulaire pour ajouter des nouveaux prénoms.
+
+Modifier une entrée
+se connecter à la base de données
+faire la requête SQL préparée
+$dbh = new PDO('mysql:host=localhost;dbname=a25012345;charset=utf8', 'a25012345', 'secret');
+$sth = $dbh->prepare('UPDATE users 
+                      SET display_name = :name
+                      WHERE user_login = :login');
+$values = array('name'  => $nom,
+                'login' => $user_login);
+$sth->execute($values);
+Exercice
+Corrigez ce code :
+
+$sth = $dbh->prepare('UPDATE users 
+                      SET password = ' . $_POST['mdp'] . 
+                      ' WHERE user_login = ' . $_POST['login']);
+$sth->execute();
+Choisir  
+Supprimer une entrée
+se connecter à la base de données
+faire la requête SQL préparée
+$dbh = new PDO('mysql:host=localhost;dbname=a25012345;charset=utf8', 'a25012345', 'secret');
+$sth = $dbh->prepare('DELETE FROM films 
+                      WHERE title=:nom_film');
+$values = array('nom_film' => $_GET['film']);
+$sth->execute($values);
+33
+
+
+Modifier une entrée. se connecter à la base de données. faire la requête SQL préparée. $dbh = new PDO ( 'mysql:host=localhost;dbname=a25012345;charset=utf8' , 'a25012345' , 'secret' ); $sth = $dbh -> prepare ( 'UPDATE users SET display_name = :name WHERE user_login = :login' ); $values = array ( 'name' => $nom , 'login' => $user_login ); $sth -> execute ( $values );
+
+
+Supprimer une entrée. se connecter à la base de données. faire la requête SQL préparée. $dbh = new PDO ( 'mysql:host=localhost;dbname=a25012345;charset=utf8' , 'a25012345' , 'secret' ); $sth = $dbh -> prepare ( 'DELETE FROM films WHERE title=:nom_film' ); $values = array ( 'nom_film' => $_GET [ 'film' ]); $sth -> execute ( $values );
+
+# COURS HTML :
+
+Module
+Intégration web
+toufik.baroudi@amu.fr
+
+BAROUDI Toufik
+
+Introduction à
+HTML5
+2
+Concepts de base
+HTTP (Hyper Text Transfert Protocol ):
+ Protocole de transmission permettant à l'utilisateur d'accéder à des
+ pages web par l'intermédiaire d'un navigateur.
+HTML (Hyper Text Markup Language) :
+Langage de marques (balises) utilisé pour la création des pages web
+et pour afficher l’information dans un navigateur web.
+URL (Uniform Resource Locator) :
+Système d’adresses utilisé pour localiser toutes les pages web.
+Concepts de base
+ Les balises structurent le contenu de la page (texte, images, etc.)
+ Chaque balise a un rôle et donne du sens au contenu présenté.
+ Les balises ne sont pas sensibles à la casse, la balise <P> marche
+ également que <p>.
+
+Une première Page Web
+Structure: Elle est déterminée par une hiérarchie de balises avec
+ des sémantiques différentes.
+<! DOCTYPE html >
+<html>
+<head>
+ <title> Les informations de la page </title>
+ </head>
+ <body>
+Le contenu de la page
+</body>
+</html>
+Les balises HTML 5
+Par convention et pour faciliter la lecture du code, toute balise
+ouverte doit être fermée (sauf exception).
+ Certaines balises bien particulières n’ont pas besoin d’être fermées,
+on les dit " auto-fermantes », elles n’ont ni contenu ni balise fermante.
+ Elle ne peut pas être placée que dans certains parties de la hiérarchie.
+ Elle a une signification (ou sémantique) particulière.
+Les balises HTML 5
+Structure d’une balise:
+ Le contenu visible de la balise est défini entre la balise d’ouverture
+ et la balise de fermeture..
+ Propriétés d’une balise:
+ Permettent d’affecter des caractéristiques et des valeurs à la balise.
+ Elles ne sont pas visibles.
+
+Les titres
+Ces balises permettent de définir des titres des différentes importances.
+ On a 6 niveaux de hiérarchie.
+<! DOCTYPE html >
+<html>
+<body>
+<h1> Un premier entete </h1>
+<h2> Un deuxieme entete </h2>
+<h3> Un trosieme entete </h3>
+<h4> Un quatrieme entete </h4>
+<h5> Un cinquieme entete </h5>
+<h6> Un sixieme entete </h6>
+</body>
+</html>
+Les paragraphes
+Ces balises permettent d’appliquer des formats différents à chaque
+ paragraphe.
+<! DOCTYPE html >
+<html>
+<body>
+<p> Un premier paragraphe </p>
+<p> Un deuxieme paragraphe </p>
+<p> Un trosieme paragraphe </p>
+</body>
+</html>
+Les paragraphes
+La propriété title dans la balise paragraphe permet d’ajouter un title
+ flottant sur le paragraphe.
+<! DOCTYPE html >
+<html>
+<body>
+ <p title="premier title" > Un premier paragraphe
+ </p>
+ <p title="deuxieme title" > Un deuxieme paragraphe
+ </p>
+</body>
+</html>
+Les paragraphes
+La balise br :
+❑Cette balise permet de passer à la ligne suivante.
+❑Elle peut être utilisée à l’intérieur de n’importe quelle autre balise.
+❑Elle n’a pas besoin d’une balise de fermeture.
+<! DOCTYPE html >
+<html>
+<body>
+ <p title="premier title" > This is <br >a paragraph
+<br >with line breaks .</p>
+</body>
+</html>
+Les paragraphes
+La balise pre :
+❑Permet de conserver les espaces et les changements de ligne dans
+ un paragraphe.
+<! DOCTYPE html >
+<html>
+<body>
+ <pre >
+Ta tete , ton geste , ton air
+Sont beaux comme un beau paysage ;
+Le rire joue en ton visage
+Comme un vent frais dans un ciel clair .
+ </pre >
+</body>
+</html>
+Liens
+La Balise Anchor :
+❑Utilisés pour faire référence à une autre page web.
+❑La propriété href permet d’établir l’adresse URL pointée par le lien.
+❑Le texte visible sera affiché par défaut souligné et en bleu.
+<! DOCTYPE html >
+<html>
+<body>
+ <a href="https://www.google.com" > Voila un lien
+</a>
+</body>
+</html>
+Images
+La Balise Image :
+❑Utilisés pour faire référence à une image.
+❑La propriété src permet d’établir l’adresse relative de l’image à afficher.
+❑Les propriétés width et height établissent les dimensions de l’image.
+<! DOCTYPE html >
+<html>
+<body>
+ <img src="image/logo.jpeg» width="140"
+ height="142">
+</body>
+</html>
+Quelques propriétés
+Attributs Description
+alt Permet de donner une description de l’image ou du visuel si ce dernier
+n’apparaît pas à l’écran.
+disabled Permet de signaler si l’élément n’est pas habilité.
+href Spécifié l’URL qui fait référence à un ressource.
+id Spécifié un identifient unique à l’élément.
+src Spécifié l’URL pour une image.
+style Permet de spécifier le style CSS pour l’élément.
+title Spécifié de l’information additionnelle pour un élément.
+L’élément HEAD
+L’élément head permet de stocker la méta-information sur la page web.
+ L’information contenue dans cette balise n’est pas affichée.
+<! DOCTYPE html >
+<html>
+<head>
+ <title> Ma premiere page web </title>
+ <Meta charset="UTF-8">
+ </head>
+ <body>
+ </body>
+</html>
+Application des styles
+On peut changer le format du contenu à l’intérieur d’une balise en
+ utilisant la propriété style.
+<! DOCTYPE html >
+<html>
+<head>
+ <title> Ma premiere page web </title>
+ <Meta charset="UTF-8">
+ </head>
+ <body>
+ <p style="propriete:valeur;"> Paragraphe style</p>
+ </body>
+</html>
+Application des styles
+Exemple:
+<! DOCTYPE html >
+<html>
+<head>
+ <title> Ma premiere page web </title>
+ <Meta charset="UTF-8">
+ </head>
+ <body>
+ <p style="color:red;"> Texte en rouge.</p>
+ <p style="font-family:courier;"> Texte courier.</p>
+ <p style="font-size:160%;"> Texte petit.</p>
+ <p style="text-align:center;"> Texte en centre.</p>
+ </body>
+</html>
+Application des formats
+Il est possible de formater le contenu d’une page web en utilisant
+certaines balises
+<html>
+<body>
+ <b> Texte en Gras.</b>
+ <strong> Plus en Gras.</strong>
+ <i> Texte en Italique.</i>
+ <h2> Texte <small> petit </small> </h2>
+ <h2> Texte <mark> souligne </mark> </h2>
+ <p> Texte <sub> soucrit </sub> </p>
+ <p> Texte <sup> supercrit </sup> </p>
+ </body>
+</html>
+Exercice 1:
+Travaillez individuellement pour réaliser une première mise en page d’un
+document HTML. Le sujet du document est libre mais la structure doit respecter les
+consignes données ci-dessous.
+❑1 Écrivez une page web contenant un title principal et deux sections secondaires.
+❑2 Ajoutez un paragraphe après le title principal et deux paragraphes différents à
+l’intérieur de chaque section.
+❑3 Ajoutez deux liens à la fin de chaque section afin d’offrir la possibilité d’aller
+vers Wikipédia.
+❑4 Changez le format de chaque paragraphe afin de qu’il soit facile de faire la
+distinction entre eux. Par exemple, augmentez la taille de la police d’un
+paragraphe, ou la couleur de la police, ou le type de police.
+Feuilles de style
+Création des styles :
+❑Il existe une balise qui permet de centraliser les styles qui seront
+utilisés dans la page actuelle.
+<html>
+ <head>
+ <style>
+ body {background-color: powderblue;}
+ h1 {color: blue;} p {color: red;}
+ </style>
+ </head>
+ <body>
+ <h1> Voici l’entête </h1>
+ <p> Voici le paragraphe </p>
+ </body>
+</html>
+Feuilles de style
+Création des styles :
+❑Il existe une balise qui permet de centraliser les styles qui seront
+utilisés dans la page actuelle.
+<html>
+ <head>
+ <link rel="stylesheet" href= "styles.css">
+ </head>
+ <body>
+ <h1> Voici l’entête </h1>
+ <p> Voici le paragraphe </p>
+ </body>
+</html>
+Images
+Références aux images:
+❑Cette balise permet d’ajouter des références aux images en local
+mais aussi sur des serveurs distants.
+<html>
+ <body>
+ <h2> Logo de l’IUT d’Aix-Marseille </h2>
+ <img src="img/logo_iut.jpg" alt="logo de l’IUT
+ d’Aix-Marseille" style="width:304px;
+ height:228px;" >
+ <img src="img/logo_iut.jpg" alt="logo de l’IUT
+ d’Aix-Marseille" "width="304" height="228" >
+ </body>
+</html>
+Images
+Images comme liens:
+❑Les images peuvent être utilisées comme un lien vers d’autres pages..
+<html>
+ <body>
+ <a href="www.univ-amu.fr">
+ <img src="img/logo_iut.jpg" alt="logo de l’IUT
+ d’Aix-Marseille" style="width:42px;
+ height:42px;"border:0» >
+ </a>
+ </body>
+</html>
+Placement des images
+Images flottantes:
+❑Les images peuvent être placées du coté droit ou du coté gauche
+ des paragraphes.
+<html>
+ <body>
+ <p>
+ <img src="img/logo_iut.jpg" alt="logo de l’IUT
+ d’Aix-Marseille" style="float:right;width:42px;
+ height:42px;>
+ <!--L’image sera placée à droite du texte-->
+ </p>
+ </body>
+</html>
+Tableaux
+Utilité des tableaux
+❑Les tableaux permettent d’organiser les information d’une page en
+utilisant des lignes et des colonnes.
+<table >
+ <tr>
+ <th> Prenom </th>
+ <th> Nom </th>
+ </tr>
+ <tr>
+ <td> Daniel </td>
+ <td> Korea </td>
+ </tr>
+ <tr>
+ <td> Michel </td>
+ <td> Leblanc </td>
+ </tr>
+</table>
+Tableaux
+Organisation des tableaux
+❑Il est possible de faire qu’une colonne s’étend sur plusieurs colonnes
+ou qu’une ligne s’étend sur plusieurs lignes.
+<table >
+ <tr>
+ <th> Nom </th>
+ <th colspan="2"> Telephone </th>
+ </tr>
+ <tr>
+ <td> Daniel Korea </td>
+ <td> 0875489912 </td>
+ <td> 0659784217 </td>
+ </tr>
+</table>
+Tableaux
+Organisation des tableaux
+❑Il est possible de faire qu’une colonne s’étend sur plusieurs colonnes
+ou qu’une ligne s’étend sur plusieurs lignes.
+<table >
+ <tr>
+ <th> Nom </th>
+ <td> Daniel Korea </td>
+ </tr>
+ <tr>
+ <th rowspan="2"> Telephone </th>
+ <td> 0875489912 </td>
+ </tr>
+ <tr>
+ <td> 0659784217 </td>
+ </tr>
+</table>
+Les balises pour les tableaux
+Attributs Description
+table Pour définir une table,
+th Permet de définir une cellule d’entête,
+tr Spécifie une ligne de la table,
+td Spécifie une cellule,
+caption Spécifie un texte lié au tableau,
+colgroup Permet de regrouper des colonnes pour appliquer un format,
+col Spécifie les propriétés de colonnes pour les colonnes à l’intérieur d’un
+colgroup.
+thead Regroupe le contenu de l’entête dans un tableau,
+tfoot Regroupe le contenu de footer dans un tableau,
+Les formulaires
+Utilité
+❑Un formulaire permet de récupérer de l’information de l’utilisateur.
+❑Chaque formulaire doit être défini avec une balise form et tous les
+ contrôles doivent être contenus à l’intérieur de cette balise.
+<form>
+ Prenom : <br>
+ <input type="text" name="Prenom" value="Korea"> <br>
+ Nom: <br>
+ <input type="text" name="Nom" value="Daniel"> <br><br>
+ <input type="submit" value="Envoyer">
+ </form>
+Les formulaires
+Ajouter un champ de libellé
+❑Un libellé est un champ de texte prérempli avec une
+ indication pour guider le visiteur du site sur ce qu’il
+ doit écrire.
+<form>
+ <label> Prenom : </label><br>
+ <input type="text" name="Prenom" value="Korea"> <br>
+ <label> Nom: </label> <br>
+ <input type="text" name="Nom" value="Daniel"> <br><br>
+</form>
+Les formulaires
+Regroupement des champs
+❑Il est possible de regrouper un ensemble des champs à l’intérieur du
+formulaire. Ce groupe permet d’organiser sémantiquement les
+informations composant le formulaire
+<form>
+ <fieldset>
+ <legend> Informations personnelles: </legend>
+ Prenom : <br>
+ <input type="text" name="Prenom" value="Korea"> <br>
+ Nom: <br>
+ <input type="text" name="Nom" value="Daniel"> <br><br>
+ </fieldset>
+ <input type="submit" value="Envoyer">
+ </form>
+Les formulaires
+Champ Select
+❑Il permet de sélectionner une valeur à partir d’une liste de sélection
+fixe. Il est utilisé quand la liste d’options est connue à l’avance.
+<form>
+ <select name ="voitures">
+ <option value="volvo"> Volvo </option>
+ <option value="opel"> Opel </option>
+ <option value="fiat"> Fiat </option>
+ <option value="audi"> Audi </option>
+ </select>
+ </form>
+Les formulaires
+Aire de texte
+❑Elle est utilisée pour que l’utilisateur puisse introduire des
+paragraphes de texte. Il est possible d’établir le nombre des lignes
+et des colonnes de l’aire.
+<form>
+ <textarea name ="Message" rows="10" cols="30">
+ Dans cette section on peut insérer un texte longue
+ </textarea>
+ </form>
+Les formulaires
+Liste de données
+❑Elle permet d’établir une liste des valeurs pour un contrôle d’entrée.
+❑Elle est toujours utilisée avec un champ input.
+<form>
+ <input list ="Navigateurs" name="Navigateurs">
+ <datalist id="Navigateurs">
+ <option value="Firefox">
+<option value="Chrome">
+<option value="Opera»>
+<option value="Safari»>
+ </datalist>
+ </form>
+Les formulaires
+Soumission de données
+❑L’input Submit permet d’envoyer les données du formulaire.
+❑L’input Reset permet d’effacer les données du formulaire.
+❑L’input password permet d’introduire des mots de passe.
+<form>
+ Login:
+ <input type ="text" name="login" value="">
+ Password:
+ <input type ="password" name="password" value="">
+ <input type ="submit" value="Envoyer">
+ <input type ="reset" value="Effacer»>
+</form>
+Les formulaires
+Champ de sélection unique
+❑Permet de forcer l’utilisateur à choisir une seule parmi les options
+affichées. Il n’est pas possible de choisir plus d’une option. Toutes
+les options disponibles sont affichées.
+<form>
+ <input type ="radio" name="reponse" value="Vrai"
+ checked> Vrai <br>
+ <input type ="radio" name="reponse" value="Faux" > Faux
+</form>
+Les formulaires
+Champ de sélection multiple
+❑Permet à l’utilisateur à choisir plusieurs options parmi toutes des
+options affichées. Toutes les options disponibles sont affichées.
+<form>
+ <input type ="checkbox" name="MoyTrans" value="Velo" >
+ Velo <br>
+ <input type ="checkbox" name="MoyTrans" value="Voiture" >
+ Voiture <br>
+ <input type ="checkbox" name="MoyTrans" value="Train" >
+ Train <br>
+ <input type ="checkbox" name="MoyTrans" value="Avion" >
+ Avion <br>
+</form>
+Les formulaires
+Autres types d’input
+❑Sélectionner une couleur.
+❑Choisir une date.
+❑Introduire une adresse émail.
+<form>
+ Choisir une couleur : <input type ="color" name="Couleur» >
+ Date d’anniversaire : <input type ="date" name="Anniversaire»>
+ Mel : <input type ="email" name="email" >
+</form>
+Les formulaires
+Restrictions sur les entrées
+❑Il est possible d’appliquer des restrictions sur le contenu à
+ introduire dans un champ.
+Attributs Description
+disabled Spécifie si un champ est habilité.
+max Valeur maximale pour l’entrée.
+maxlength Longueur maximale de la chaîne introduite.
+min Spécifie la valeur minimale pour l’entrée
+readonly Indique que le champ est seulement de lecture.
+required Spécifie que le champ est obligatoire.
+size Spécifie la largeur maximale du champ.
+Balise Div
+Utilité
+❑Elle s’étend tout au large de la page.
+❑Elle est souvent utilisée pour la mise en page et l’organisation de
+l’information sur une page
+<div style = "background-color: black; color:white; ">
+ <h2> Paris</h2>
+ <p>
+ Paris est une des villes les plus belles du monde . Son
+ patrimoine architectural et culturale est presque inegale
+ </p>
+</div>
+Balise Span
+Utilité
+❑Elle contient en général du texte et elle s’adapte au contenu à
+l’intérieur.
+❑Elle est souvent utilisée pour contenir des messages d’erreur ou pour
+des sections adaptables au contenu dans une page
+< input type="text" name="nom"> <span
+style="color:red"> Il y a eu une erreur dans le nom
+</span>
+Multimédia en HTML
+Vidéo
+❑La balise <video> permet d’afficher des vidéos avec les formats
+supportés par le navigateur. Il est possible de définir la taille de la
+fenêtre de visualisation.
+<video width= "320" height="240" controls>
+ <source src= "media/video1.mp4" " type="video/mp4">
+ Le texte à afficher si la vidéo ne se charge pas
+</video>
+Multimédia en HTML
+Son
+❑Il est aussi possible d’ajouter un reproducteur de son à l’intérieur de
+votre page Web. Les trois formats de son supportés sont :
+ MP3, Ogg et Wav.
+<Audio controls>
+ <source src= "media/son1.mp3" " type="audio/mpeg">
+ Le texte à afficher si le son ne se charge pas
+</Audio>
+Character entities
+Explication
+❑Il existe des caractères réservés en HTML (>,<, etc)
+❑Ces entités permettent d’exprimer ces caractères sans que le
+navigateur les confonde avec des balises HTML.
+Symbole Entité Description
+< &lt; Moins que
+> &gt; Plus grand que
+& &amp; E-Commercial
+‘ &apos; Apostrophe
+€ &euro; Euro
+© &copy; Copyright
+® &reg; Marque enregistrée
+
+# COURS CSS : 

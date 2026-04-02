@@ -45,7 +45,7 @@ body {
   font-family: 'Lora', serif;
   font-size: 1.3rem;
   letter-spacing: 0.5px;
-  position: top;
+  position: relative;
   transform: skewX(20deg);
   display: grid;
   place-items: center;

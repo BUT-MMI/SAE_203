@@ -18,7 +18,7 @@ include 'include/entete.php';
 	$film = $sth->fetch();
 
 ?>
-    <img src="<?= htmlspecialchars($film['affiche']) ?>" alt="affiche"
+    <img src="<?= htmlspecialchars($film['affiche']) ?>" alt="image-innacessibleble.png"
 						style="width: 200px; height: auto;"><br>
     <?php echo htmlspecialchars($film['titre']) . ' <br> ' . htmlspecialchars($film['annee']) . ' <br><br>'; ?>
 

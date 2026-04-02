@@ -72,3 +72,22 @@ body {
 .Ajout2Film:focus {
   outline: none;
 }
+
+.grille-films {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.carte-film a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: Black;
+}
+
+.carte-film {
+  max-width: 300px;
+}

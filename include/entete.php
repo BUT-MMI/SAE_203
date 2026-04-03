@@ -7,12 +7,40 @@ $sth->execute();
 $genres = $sth->fetchAll();
 ?>
 
-<nav class="menu">
-  <ul>
-    <li><a href="index.php">Page d'accueil</a></li>
-    <li><a href="GOUGOUGAGA">Genres</a></li>
-    <li><a href="categorie.php?cat=nouveaux">Nouveautés</a></li>
-    <li><a href="categorie.php?cat=notes">Mieux notés</a></li>
-  </ul>
-  <a class="Ajout2Film" data-label="Ajouter un film !" href="nouveau_film.php" role="button"></a>
-</nav>
+<div class="header-wrapper">
+  <header>
+ 
+    <!-- GAUCHE : Logo + Nom du site -->
+    <a class="logo" href="index.php">
+      <!-- Remplace le src par ton logo si tu en as un -->
+      <img src="img\croutsy.png" alt="Logo" />
+      <span>Crousty Movies</span>
+    </a>
+ 
+    <!-- CENTRE : Menu de navigation -->
+    <nav>
+      <!-- Menu déroulant Genres -->
+      <div class="dropdown">
+        <button href="categorie.php" class="dropdown-btn">
+          Genres <span class="arrow">▼</span>
+        </button>
+        <div class="dropdown-menu">
+
+          <?php foreach ($genres as $genre): ?>
+            <a href="categorie.php?cat=<?= urlencode($genre['libelle']) ?>">
+              <?= htmlspecialchars($genre['libelle']) ?>
+            </a>
+          <?php endforeach; ?> <!-- Créer une boucle sans jsp pourquoi -->
+            
+        </div>
+      </div>
+ 
+      <a href="categorie.php?cat=nouveaux">Nouveautés</a>
+      <a href="categorie.php?cat=notes">Mieux notés</a>
+ 
+    </nav>
+    <!-- DROITE : Bouton ajouter un film -->
+    <button class="Ajout2Film" data-label="Ajouter un film !" href="nouveau_film.php" role="button"></button>
+ 
+  </header>
+  </div>

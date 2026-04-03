@@ -40,7 +40,8 @@ $genres = $sth->fetchAll();
  
     </nav>
     <!-- DROITE : Bouton ajouter un film -->
-    <button class="Ajout2Film" href="nouveau_film.php" data-label="Ajouter un film !"  role="button"></button>
- 
+    <a href="nouveau_film.php" class="AjoutFilm">
+    <button class="Ajout2Film" data-label="Ajouter un film !" href="nouveau_film.php" role="button"></button>
+    </a>
   </header>
   </div>

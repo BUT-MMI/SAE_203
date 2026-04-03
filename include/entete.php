@@ -9,10 +9,8 @@ $genres = $sth->fetchAll();
 
 <div class="header-wrapper">
   <header>
- 
     <!-- GAUCHE : Logo + Nom du site -->
     <a class="logo" href="index.php">
-      <!-- Remplace le src par ton logo si tu en as un -->
       <img src="img\croutsy.png" alt="Logo" />
       <span>Crousty Movies</span>
     </a>
@@ -25,7 +23,6 @@ $genres = $sth->fetchAll();
           Genres <span class="arrow">▼</span>
         </button>
         <div class="dropdown-menu">
-
           <?php foreach ($genres as $genre): ?>
             <a href="categorie.php?cat=<?= urlencode($genre['libelle']) ?>">
               <?= htmlspecialchars($genre['libelle']) ?>

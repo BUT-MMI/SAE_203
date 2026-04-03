@@ -15,23 +15,22 @@ require_once 'include/db.php';
 
 $cat_genre = false;
 
-if ($_GET['cat'] == 'nouveaux') {	
+if ($_GET['cat'] == 'nouveaux') {	/* On trie les films par ordre d'ajout */
 	$sth = $dbh->prepare('SELECT idfilm, titre, annee, affiche, genre.libelle FROM film 
 						INNER JOIN genre ON film.idgenre = genre.idgenre
 						ORDER BY idfilm DESC');
 	$sth->execute();
 	$films = $sth->fetchAll();
-} else if ($_GET['cat'] == 'notes') {
+} else if ($_GET['cat'] == 'notes') { /* On trie les films par les meilleures notes. */
 	$sth = $dbh->prepare('SELECT film.idfilm, film.titre, film.annee, film.affiche, genre.libelle, AVG(commentaire.note) AS moyenne_note FROM film
 					INNER JOIN genre ON film.idgenre = genre.idgenre
 					LEFT JOIN commentaire ON commentaire.idfilm = film.idfilm
 					GROUP BY film.idfilm, film.titre, film.annee, film.affiche, genre.libelle
 					ORDER BY moyenne_note DESC'); 
-
 	$sth->execute();
 	$films = $sth->fetchAll();
-} else {
-	$cat_genre = true;
+} else { /* On ne récupère que les films du genre choisi */
+	$cat_genre = true; /* On utilise cette variable plus tard pour ne pas afficher le genre dans les cartes de films (pour pas avoir de répétition du style "action - action - action") */
 	$sth = $dbh->prepare('SELECT idfilm, titre, annee, affiche, genre.libelle FROM film
 						INNER JOIN genre ON film.idgenre = genre.idgenre
 						WHERE genre.libelle = :libelle');
@@ -48,11 +47,7 @@ if ($_GET['cat'] == 'nouveaux') {
         <?php foreach ($films as $film) { ?>
             <article class="carte-film">
                 <a href="film.php?id=<?php echo $film['idfilm']; ?>">
-                    <?php if (!empty($film['affiche'])) { ?>
-                        <img src="<?php echo $film['affiche']; ?>" alt="Affiche de <?php echo $film['titre']; ?>">
-                    <?php } else { ?>
-                        <img src="img\image-innacessible.png" alt="Pas d'affiche">
-                    <?php } ?>
+                    <img src="<?php echo $film['affiche']; ?>" alt="Affiche de <?php echo $film['titre']; ?>">
                     <div class="infos-carte">
                         <p class="titre-film"><?php echo $film['titre']; ?></p>
                         <p class="annee-film"><?php echo $film['annee']; ?></p>

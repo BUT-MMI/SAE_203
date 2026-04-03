@@ -30,7 +30,7 @@ if (!is_string($titre) || strlen($titre) < 1 || strlen($titre) > 200) {
     $erreur = true;
 }
 if (!is_string($realisateur) || strlen($realisateur) < 2 || strlen($realisateur) > 100) {
-    echo '<p>Le réalisateur est obligatoire. <a href="nouveau_film.php">Retour</a></p>';
+    echo '<p>Le nombre de caractère entré pour le réalisateur n\'est pas valide. <a href="nouveau_film.php">Retour</a></p>';
     $erreur = true;
 }
 if (!is_numeric($annee) || $annee < 1888 || $annee > 2027) {

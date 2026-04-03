@@ -25,8 +25,10 @@ if ($_GET['cat'] == 'nouveaux') {
 	$sth->execute();
 	$films = $sth->fetchAll();
 } else {
-	$sth = $dbh->prepare('SELECT idfilm, titre, annee, affiche FROM film WHERE genre = :genre');
-    $values = array('genre' => $_GET['#']);
+	$sth = $dbh->prepare('SELECT idfilm, titre, annee, affiche FROM film
+						INNER JOIN genre ON film.idgenre = genre.idgenre
+						WHERE genre.libelle = :libelle');
+    $values = array('libelle' => $_GET['cat']);
 	$sth->execute($values);
 	$films = $sth->fetchAll();
 }

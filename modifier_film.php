@@ -17,21 +17,19 @@ Page de modification d'un film. Similaire à nouveau_film.php mais :
 
 <body>
     <?php
-    /* On inclut le menu (qui contient aussi la connexion à la BDD) */
     include('include/entete.php');
     ?>
 
     <?php
-    /* On récupère l'ID du film depuis l'URL (?id=...) */
     $id_film = $_GET['id'];
 
-    /* On fait une requête pour récupérer les données du film */
+    // On fait une requête pour récupérer les données du film
     $sth = $dbh->prepare('SELECT * FROM film WHERE idfilm = :id');
     $values = array('id' => $id_film);
     $sth->execute($values);
     $film = $sth->fetch();
 
-    /* On récupère la liste des genres pour la liste déroulante */
+    // On récupère la liste des genres pour la liste déroulante
     $sth = $dbh->prepare('SELECT * FROM genre ORDER BY libelle');
     $sth->execute();
     $genres = $sth->fetchAll();
@@ -82,8 +80,7 @@ Page de modification d'un film. Similaire à nouveau_film.php mais :
                 <label for="genre">Genre :</label>
                 <select id="genre" name="genre">
                     <?php
-                    /* On génère les options dynamiquement.
-                     * On marque "selected" l'option qui correspond au genre actuel du film */
+                    // On marque "selected" l'option qui correspond au genre actuel du film
                     foreach ($genres as $g) {
                         if ($g['idgenre'] == $film['idgenre']) {
                             echo '<option value="' . $g['idgenre'] . '" selected>' . $g['libelle'] . '</option>';
@@ -101,7 +98,7 @@ Page de modification d'un film. Similaire à nouveau_film.php mais :
             </div>
 
             <div class="formulaire-groupe">
-                <label for="bande_annonce">Bande annonce (URL YouTube embed) :</label>
+                <label for="bande_annonce">Bande annonce (URL YouTube) :</label>
                 <input type="url" id="bande_annonce" name="bande_annonce" value="<?php echo $film['bandeannonce']; ?>">
             </div>
 

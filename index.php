@@ -1,7 +1,3 @@
-<!--
-POUR MIEUX COLLER AU COURS
--->
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -13,17 +9,10 @@ POUR MIEUX COLLER AU COURS
 
 <body>
     <?php
-    /* Importez le fichier « entete.php » dans le dossier « include » pour la barre de 
-     * menu.
-     */
     include('include/entete.php');
     ?>
 
     <?php
-    /*
-     * Ensuite, faites une requête SQL pour recupérer tous les films et les afficher.
-     */
-
     // On récupère tous les films avec leur genre
     $sth = $dbh->prepare('SELECT film.*, genre.libelle FROM film JOIN genre ON film.idgenre = genre.idgenre ORDER BY film.titre');
     $sth->execute();

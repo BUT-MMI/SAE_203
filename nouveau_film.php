@@ -53,7 +53,7 @@ require_once 'include/db.php';
 			<div class="formulaire-groupe">
 				<label for="genre">Genre :</label>
 				<select id="genre" name="genre">
-					<!-- Les options pour le genre sont générées dynamiquement avec PHP -->
+					<!-- Les options pour le genre -->
 					<?php
 					$sth = $dbh->prepare('SELECT * FROM genre ORDER BY libelle');
 					$sth->execute();
@@ -72,9 +72,9 @@ require_once 'include/db.php';
 			</div>
 
 			<div class="formulaire-groupe">
-				<label for="bande_annonce">Bande annonce (URL YouTube embed) :</label>
+				<label for="bande_annonce">Bande annonce (URL YouTube) :</label>
 				<input type="url" id="bande_annonce" name="bande_annonce"
-					placeholder="https://www.youtube.com/embed/xxx">
+					placeholder="https://www.youtube.com/watch?v=xxxx">
 			</div>
 
 			<input type="submit" class="btn-valider" value="Ajouter le film">

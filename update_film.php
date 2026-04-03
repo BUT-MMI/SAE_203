@@ -6,8 +6,9 @@
  */
 
 include('include/db.php');
+include('include/utils.php');
 
-/* On récupère toutes les données du formulaire */
+// On récupère toutes les données du formulaire
 $id_film = $_POST['id_film'];
 $titre = $_POST['titre'];
 $annee = $_POST['annee'];
@@ -17,9 +18,9 @@ $acteurs = $_POST['acteurs'];
 $resume = $_POST['resume'];
 $id_genre = $_POST['genre'];
 $affiche = $_POST['affiche'];
-$bande_annonce = $_POST['bande_annonce'];
+$bande_annonce = getYouTubeEmbedUrl($_POST['bande_annonce']);
 
-/* Validation des données */
+// Validation des données
 $erreur = false;
 
 if (!is_string($titre) || strlen($titre) < 1 || strlen($titre) > 200) {
@@ -63,7 +64,8 @@ if (!is_string($resume) || strlen($resume) < 30 || strlen($resume) > 400) {
 if ($erreur) {
     echo '<a href="nouveau_film.php">Retour</a>';
 }
-/* Si tout est bon, on met à jour le film dans la base de données */
+
+// Si tout est bon, on met à jour le film dans la base de données
 if (!$erreur) {
     $sth = $dbh->prepare('UPDATE film SET
         titre        = :titre,
@@ -91,7 +93,7 @@ if (!$erreur) {
     );
     $sth->execute($values);
 
-    /* On redirige vers la page du film une fois la modification faite */
+    // On redirige vers la page du film une fois la modification faite
     header('Location: film.php?id=' . $id_film);
     exit();
 }

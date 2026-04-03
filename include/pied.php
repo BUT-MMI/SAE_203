@@ -4,7 +4,7 @@
   <div class="footer-content">
     <div class="footer-brand">
       <a href="index.php" class="footer-logo">
-        <img src="img\croutsy.png" alt="Logo"/>
+        <img src="img\croutsy.png" alt="Logo" />
         Crousty Movies
       </a>
       <p class="footer-description">
@@ -26,6 +26,7 @@
   </div>
   <div class="footer-copyright">
     <p>© 2026 Crousti Movies. Tous droits réservés. Ce site est un projet de la SAE 203.<br>
-    Développé par <b>Gabriel ANDERLUCCI</b>, <b>Mathis ROBERDEAU</b>, <b>Ulysse SOUCARET</b> & <b>Florentin MERLE</b>.</p>
+      Développé par <b>Gabriel ANDERLUCCI</b>, <b>Mathis ROBERDEAU</b>, <b>Ulysse SOUCARET</b>, <b>Ewan AISSOU</b> &
+      <b>Florentin MERLE</b>.</p>
   </div>
 </footer>

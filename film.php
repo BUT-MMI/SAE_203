@@ -11,17 +11,10 @@
 
 <body>
   <?php
-  /* Importez le fichier « entete.php » dans le dossier « include » pour la barre 
-   * de menu.
-   */
   include('include/entete.php');
   ?>
 
   <?php
-  /* Utilisez la méthode get pour savoir quel film afficher. Vous devrez utiliser
-   * la valeur de $_GET['id'] pour faire une requête SQL.
-   */
-
   // On récupère les informations du film
   $id_film = $_GET['id'];
 
@@ -93,12 +86,6 @@
   <?php } ?>
 
   <!-- Liste des commentaires -->
-  <?php
-  /*
-   * Affichez tous les commentaires de ce film avec : auteur, note, commentaire,
-   * bouton pour le supprimer, date, etc.
-   */
-  ?>
   <section class="section-commentaires">
     <h2>Commentaires (<?php echo count($commentaires); ?>)</h2>
 
@@ -131,11 +118,6 @@
   </section>
 
   <!-- Formulaire pour ajouter un commentaire -->
-  <?php
-  /*
-   * Enfin, ajoutez un formulaire pour insérer un nouveau commentaire.
-   */
-  ?>
   <section class="section-formulaire">
     <h2>Laisser un commentaire</h2>
     <form method="post" action="ajouter_commentaire.php">

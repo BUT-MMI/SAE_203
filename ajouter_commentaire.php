@@ -2,16 +2,15 @@
 /* Page pour valider et traiter les données du formulaire pour ajouter un 
  * nouveau commentaire sur la page « film.php ».
  * 
- * Validez les données du formulaire, en affichant des messages d'erreur si
- * nécessaire. Si tout est bon, ajoutez le commentaire dans la base de données
- * et renvoyez l'utilisateur vers la page du film.
+ * Valide les données du formulaire, en affichant des messages d'erreur si
+ * nécessaire. Si tout est bon, ajoute le commentaire dans la base de données
+ * et renvoie l'utilisateur vers la page du film.
  *
- * Notez que l'identifiant du film se trouve dans $_POST['id_film']
+ * Note que l'identifiant du film se trouve dans $_POST['id_film']
  */
 
 include('include/db.php');
 
-// On récupère les données du formulaire
 $pseudo = $_POST['nom'];
 $note = $_POST['note'];
 $avis = $_POST['message'];

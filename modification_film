@@ -5,7 +5,7 @@
  * L'identifiant du film se trouve dans $_POST['id_film'].
  */
 
-include('connexion.php');
+include('include/db.php');
 
 /* On récupère toutes les données du formulaire */
 $id_film = $_POST['id_film'];

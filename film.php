@@ -19,6 +19,7 @@ require_once 'include/db.php';
   $sth->execute($values);
   $film = $sth->fetch();
 
+  $id_film = $_GET['id'];
   ?>
   <img src="<?= htmlspecialchars($film['affiche']) ?>" alt="image-innacessibleble.png"
     style="width: 200px; height: auto;"><br>

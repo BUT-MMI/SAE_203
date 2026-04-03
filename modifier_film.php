@@ -4,7 +4,7 @@ Page de modification d'un film. Similaire à nouveau_film.php mais :
 - On pré-remplit le formulaire avec les données existantes du film
 - Le formulaire envoie vers update_film.php
 -->
-<?php include('include/db.php');
+<?php require_once 'include/db.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">

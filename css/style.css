@@ -31,12 +31,12 @@ body {
   position: sticky;
   top: 0;
   background: #ffd470;
-  margin: 0;
+  margin: 30px 50px;
 }
 .header-wrapper {
   position: sticky;
   z-index: 100;
-  padding: 35px 15px 10px;
+  margin: 50px 50px 35px 50px;
 }
 
 header {
@@ -103,10 +103,14 @@ nav a:hover {
 }
 
 .dropdown-btn:hover {
+  color: #EA5368,;
+}
+
+.dropdown-text {
+  font-size: 15px;
   color: #EA5368;
 }
 
-/* La petite flèche ▼ */
 .arrow {
   font-size: 10px;
 }
@@ -142,6 +146,7 @@ nav a:hover {
 
 .dropdown-menu a:hover {
   background-color: #EA5368;
+  color: #EEE2C7;
 }
 
 /* ── Contenu factice pour tester le scroll ── */

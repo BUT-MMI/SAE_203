@@ -18,9 +18,9 @@
       <h4>Pages</h4>
       <ul>
         <li><a href="index.php">Page d'accueil</a></li>
-        <li><a href="film.php">Films</a></li>
-        <li><a href="categorie.php">Catégories</a></li>
-        <li><a href="contact.php">Contact</a></li>
+        <li><a href="categorie.php?cat=nouveaux">Nouveautés</a></li>
+        <li><a href="categorie.php?cat=notes">Mieux notés</a></li>
+        <li><a href="#">Contact</a></li>
       </ul>
     </div>
   </div>

@@ -11,6 +11,11 @@
   src: url("https://robindelaporte.fr/codepen/play/BwModelicaSS01-ExtraBold.woff") format("woff");
 }
 
+* {
+  box-sizing: border-box;
+  font-family: 'bw';
+}
+
 body {
   background: #F5EFE1;
   margin: 0;
@@ -28,10 +33,127 @@ body {
   background: #ffd470;
   margin: 0;
 }
+.header-wrapper {
+  position: sticky;
+  z-index: 100;
+  padding: 35px 15px 10px;
+}
+
+header {
+  background-color: #EEE2C7;
+  padding: 0 30px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 16px;
+  border: 1px solid rgba(233, 69, 96, 0.4);
+  box-shadow: 0 4px 20px rgba(94, 75, 65, 0.2), 0 2px 20px rgba(233, 69, 96, 0.25);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+}
+
+.logo img {
+  width: 36px;
+  height: 36px;
+}
+
+.logo span {
+  font-size: 20px;
+  font-weight: bold;
+  color: #EA5368;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  list-style: none;
+}
+
+nav a {
+  color: #5E4B21;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+nav a:hover {
+  color: #EA5368;
+}
+
+.dropdown {
+  position: relative;
+  /* nécessaire pour positionner le sous-menu */
+}
+
+.dropdown-btn {
+  background: none;
+  color: #5E4B21;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dropdown-btn:hover {
+  color: #EA5368;
+}
+
+/* La petite flèche ▼ */
+.arrow {
+  font-size: 10px;
+}
+
+/* Le sous-menu, caché par défaut */
+.dropdown-menu {
+  display: none;
+  /* caché */
+  position: absolute;
+  /* sort du flux normal */
+  top: 100%;
+  /* juste en dessous du bouton */
+  left: 0;
+  background-color: #F5EFE1;
+  border-radius: 6px;
+  min-width: 150px;
+  overflow: hidden; /* Ca évite de voir les coins carrés du hover */
+  box-shadow: 0 px 6px rgba(94, 75, 33, 0.1);
+}
+
+/* On l'affiche quand on survole le parent .dropdown */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 16px;
+  color: #5E4B21;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.dropdown-menu a:hover {
+  background-color: #EA5368;
+}
+
+/* ── Contenu factice pour tester le scroll ── */
+main {
+  padding: 40px 30px;
+  height: 200vh;
+  /* page très longue pour tester sticky */
+}
 
 /* Le bouton suivant à été intégré depuis cette page https://www.sliderrevolution.com/resources/css-3d-buttons/ */
 .Ajout2Film, .Ajout2Film::before {
-  border: 2px solid #DED0B0;
+  border: 1px solid rgba(233, 69, 96, 0.4);
   border-radius: 8px;
   cursor: pointer;
   min-width: 250px;
@@ -50,6 +172,7 @@ body {
   display: grid;
   place-items: center;
   float: right;
+  margin-right: 40px;
 }
 
 .Ajout2Film::before {
@@ -82,11 +205,11 @@ body {
 }
 
 .carte-film {
-  background: white;
-  border: 1px solid #ddd;
+  background: #EEE2C7;
+  border: 1px solid #DED0B0;
   border-radius: 8px;
   padding: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(94, 75, 65, 0.1);
   max-width: 250px;
   text-align: center;
 }
@@ -111,11 +234,12 @@ body {
 
 .titre-film {
   font-weight: bold;
+  color: #EA5368;
   margin: 5px 0;
 }
 
 .annee-film {
-  color: #666;
+  color: #5E4B21;
   margin: 5px 0;
 }
 

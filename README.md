@@ -20,4 +20,5 @@ clique logo = accueil
 clique genre= menu deroulant 
 clique nouveauté = page avec les derniere sorti
 clique mieux noté = page des film classé par leurs note 
-clique sur ajouter un film = 
+clique sur ajouter un film = possibilité de de rentré les info d un nouveau filM
+clique sur un film = permet de voir les info du film et d ajouter un commentaire sur le film et une possibilité de modifier des info 

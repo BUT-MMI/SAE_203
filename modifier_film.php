@@ -4,7 +4,8 @@ Page de modification d'un film. Similaire à nouveau_film.php mais :
 - On pré-remplit le formulaire avec les données existantes du film
 - Le formulaire envoie vers update_film.php
 -->
-
+<?php include('include/db.php');
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -40,7 +41,7 @@ Page de modification d'un film. Similaire à nouveau_film.php mais :
         <h2>Modifier le film</h2>
 
         <!-- Le formulaire envoie vers update_film.php -->
-        <form method="post" action="modification_film.php">
+        <form method="post" action="update_film.php">
 
             <!-- On passe l'ID du film en champ caché pour que update_film.php sache quel film modifier -->
             <input type="hidden" name="id_film" value="<?php echo $film['idfilm']; ?>">

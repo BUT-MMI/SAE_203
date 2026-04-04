@@ -56,7 +56,7 @@ if (!is_numeric($duree) || $duree < 1 || $duree > 1000) {
     $erreur = true;
 }
 
-if (!is_string($resume) || strlen($resume) < 30 || strlen($resume) > 400) {
+if (!is_string($resume) || strlen($resume) < 30 || strlen($resume) > 1000) {
     echo '<p>La taille du résumé n\'est pas valide. Pensez à respecter les contraintes de longueur.</p>';
     $erreur = true;
 }

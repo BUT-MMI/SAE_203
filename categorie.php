@@ -53,7 +53,9 @@ if ($cat_genre === true) {
 		$sth->execute($values);
 		$genre = $sth->fetch();
 		echo '<h2 class="titre-section">' . htmlspecialchars($genre['libelle']) . '</h2>';
+		echo '<div class="genre-description">';
 		echo '<p>' . htmlspecialchars($genre['description']) . '</p>';
+		echo '</div>';
 
 } else if ($_GET['cat'] == 'nouveaux') {
 	echo '<h2 class="titre-section">Nouveautés</h2>';

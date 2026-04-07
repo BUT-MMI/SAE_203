@@ -87,12 +87,12 @@ header {
 }
 
 .logo img {
-  width: 36px;
-  height: 36px;
+  width: 50px;
+  height: 50px;
 }
 
 .logo span {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
   color: var(--color-primary);
 }
@@ -100,14 +100,14 @@ header {
 nav {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 30px;
   list-style: none;
 }
 
 nav a {
   color: var(--color-text);
   text-decoration: none;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 nav a:hover {
@@ -123,7 +123,7 @@ nav a:hover {
   background: none;
   color: var(--color-text);
   border: none;
-  font-size: 15px;
+  font-size: 18px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -135,7 +135,7 @@ nav a:hover {
 }
 
 .dropdown-text {
-  font-size: 15px;
+  font-size: 18px;
   color: var(--color-primary);
 }
 
@@ -743,12 +743,45 @@ main {
     box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
 }
 
+/* ── DESCRIPTION DES GENRES ── */
+.genre-description {
+    background: var(--color-bg-accent);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(233, 69, 96, 0.4);
+    box-shadow: var(--shadow-light), var(--shadow-accent);
+    margin: 0 var(--margin-section) var(--margin-section-sm) var(--margin-section);
+    padding: var(--padding-section-sm);
+    transition: var(--transition);
+}
+
+.genre-description:hover {
+    box-shadow: var(--shadow-medium), var(--shadow-accent-heavy);
+    border-color: rgba(233, 69, 96, 0.6);
+}
+
+.genre-description p {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: justify;
+}
+
 /* Responsivité - Breakpoints fluides */
 @media (max-width: 1024px) {
     /* Tablettes */
     :root {
         --margin-section: 40px;
         --margin-section-sm: 25px;
+    }
+
+    .genre-description {
+        margin: 0 var(--margin-section) var(--margin-section-sm) var(--margin-section);
+        padding: 25px;
+    }
+
+    .genre-description p {
+        font-size: 0.95rem;
     }
 
     .carte-film {
@@ -770,6 +803,39 @@ main {
     :root {
         --margin-section: 20px;
         --margin-section-sm: 15px;
+    }
+
+    .genre-description {
+        margin: 0 var(--margin-section) var(--margin-section-sm) var(--margin-section);
+        padding: var(--padding-section-sm);
+    }
+
+    .genre-description p {
+        font-size: 0.9rem;
+        text-align: left;
+    }
+
+    header {
+        padding: 0 20px;
+        height: 60px;
+    }
+
+    .logo img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .logo span {
+        font-size: 20px;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    nav a,
+    .dropdown-btn {
+        font-size: 16px;
     }
 
     .carte-film {
@@ -809,6 +875,39 @@ main {
     :root {
         --margin-section: 15px;
         --margin-section-sm: 10px;
+    }
+
+    .genre-description {
+        margin: 0 var(--margin-section) var(--margin-section-sm) var(--margin-section);
+        padding: 15px;
+    }
+
+    .genre-description p {
+        font-size: 0.9rem;
+        text-align: left;
+    }
+
+    header {
+        padding: 0 15px;
+        height: 60px;
+    }
+
+    .logo img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .logo span {
+        font-size: 18px;
+    }
+
+    nav {
+        gap: 10px;
+    }
+
+    nav a,
+    .dropdown-btn {
+        font-size: 14px;
     }
 
     .carte-film {

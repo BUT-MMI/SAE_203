@@ -20,7 +20,7 @@ require_once 'include/db.php';
 	if ($_GET['cat'] == 'nouveaux') { // On trie les films par ordre d'ajout
 		$sth = $dbh->prepare('SELECT idfilm, titre, annee, affiche, genre.libelle FROM film 
 						INNER JOIN genre ON film.idgenre = genre.idgenre
-						ORDER BY idfilm DESC');
+						ORDER BY idfilm DESC LIMIT 10');
 		$sth->execute();
 		$films = $sth->fetchAll();
 	} else if ($_GET['cat'] == 'notes') { // On trie les films par les meilleures notes.
@@ -28,7 +28,7 @@ require_once 'include/db.php';
 					INNER JOIN genre ON film.idgenre = genre.idgenre
 					LEFT JOIN commentaire ON commentaire.idfilm = film.idfilm
 					GROUP BY film.idfilm, film.titre, film.annee, film.affiche, genre.libelle
-					ORDER BY moyenne_note DESC');
+					ORDER BY moyenne_note DESC LIMIT 10');
 		$sth->execute();
 		$films = $sth->fetchAll();
 	} else { // On ne récupère que les films du genre choisi

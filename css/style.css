@@ -207,6 +207,7 @@ main {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: flex-start;
+  margin: 0 50px;
 }
 
 .carte-film {
@@ -235,6 +236,15 @@ main {
 
 .infos-carte {
   margin-top: 10px;
+}
+
+.titre-section {
+  display : flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #EA5368;
+  margin: 30px 50px 15px 50px;
 }
 
 .titre-film {

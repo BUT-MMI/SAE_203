@@ -48,30 +48,36 @@
 
     <!-- Informations du film -->
     <div class="film-infos">
-      <div class="film-titre-container">
-        <h1 class="film-titre"><?php echo $film['titre']; ?></h1>
-        <a href="modifier_film.php?id=<?php echo $id_film; ?>" class="btn-modifier">✏️ Modifier</a>
-      </div>
+      <<<<<<< HEAD <h1 class="film-titre"><?php echo h($film['titre']); ?></h1>
+        =======
+        <div class="film-titre-container">
+          <h1 class="film-titre"><?php echo $film['titre']; ?></h1>
+          <a href="modifier_film.php?id=<?php echo $id_film; ?>" class="btn-modifier">✏️ Modifier</a>
+        </div>
+        >>>>>>> 4156233d6348f6365a1044ebc45d571e8f43410f
 
-      <div class="film-meta">
-        <span><?php echo $film['annee']; ?></span>
-        <span><?php echo $film['duree']; ?> min</span>
-        <span class="badge-genre"><?php echo $film['libelle']; ?></span>
-      </div>
+        <div class="film-meta">
+          <span><?php echo h($film['annee']); ?></span>
+          <span><?php echo h($film['duree']); ?> min</span>
+          <span class="badge-genre"><?php echo h($film['libelle']); ?></span>
+        </div>
 
-      <?php if ($notes['nb_commentaires'] > 0) { ?>
-        <p class="film-note-moyenne">
-          ⭐ <?php echo number_format($notes['note_moyenne'], 1); ?> / 5
-          (<?php echo $notes['nb_commentaires']; ?> avis)
-        </p>
-      <?php } else { ?>
-        <p class="film-note-moyenne" style="color: #9a9ab0;">Pas encore de note</p>
-      <?php } ?>
+        <?php if ($notes['nb_commentaires'] > 0) { ?>
+          <p class="film-note-moyenne">
+            ⭐ <?php echo number_format($notes['note_moyenne'], 1); ?> / 5
+            (<?php echo $notes['nb_commentaires']; ?> avis)
+          </p>
+        <?php } else { ?>
+          <p class="film-note-moyenne" style="color: #9a9ab0;">Pas encore de note</p>
+        <?php } ?>
 
-      <p class="film-resume"><?php echo $film['resume']; ?></p>
+        <p class="film-resume"><?php echo h($film['resume']); ?></p>
 
-      <p class="film-detail-ligne"><strong>Réalisateur :</strong> <?php echo $film['realisateur']; ?></p>
-      <p class="film-detail-ligne"><strong>Acteurs :</strong> <?php echo $film['acteurs']; ?></p>
+        <p class="film-detail-ligne"><strong>Réalisateur :</strong> <?php echo h($film['realisateur']); ?></p>
+        <p class="film-detail-ligne"><strong>Acteurs :</strong> <?php echo h($film['acteurs']); ?></p>
+
+        <!-- Bouton pour modifier le film -->
+        <a href="modifier_film.php?id=<?php echo $id_film; ?>" class="btn-modifier">✏️ Modifier ce film</a>
     </div>
 
   </div>
@@ -92,23 +98,17 @@
     <?php foreach ($commentaires as $row) { ?>
       <article class="commentaire">
         <div class="commentaire-entete">
-          <span class="commentaire-pseudo"><?php echo $row['pseudo']; ?></span>
+          <span class="commentaire-pseudo"><?php echo h($row['pseudo']); ?></span>
           <span class="commentaire-note">
-            <?php for ($i = 1; $i <= 5; $i++) {
-              if ($i <= $row['note']) {
-                echo '⭐';
-              } else {
-                echo '☆';
-              }
-            } ?>
+            <?php echo afficher_etoiles($row['note']); ?>
           </span>
-          <span class="commentaire-date"><?php echo $row['datecommentaire']; ?></span>
+          <span class="commentaire-date"><?php echo formater_date($row['datecommentaire']); ?></span>
           <a class="btn-supprimer"
             href="supprimer_commentaire.php?id=<?php echo $row['idcommentaire']; ?>&idFilm=<?php echo $id_film; ?>">
             Supprimer
           </a>
         </div>
-        <p class="commentaire-texte"><?php echo $row['avis']; ?></p>
+        <p class="commentaire-texte"><?php echo h(filtrer_gros_mots($row['avis'])); ?></p>
       </article>
     <?php } ?>
 

@@ -24,6 +24,9 @@ try {
 } catch (PDOException $e) {
     die("Erreur de connexion à Supabase : " . $e->getMessage());
 }
+
+// Inclusion des fonctions utilitaires
+require_once __DIR__ . '/utils.php';
 ?>
 
 

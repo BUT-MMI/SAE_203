@@ -10,7 +10,6 @@
  */
 
 include('include/db.php');
-include('include/utils.php');
 
 $titre = $_POST['titre'];
 $annee = $_POST['annee'];

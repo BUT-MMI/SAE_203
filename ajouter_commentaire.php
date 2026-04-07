@@ -13,7 +13,7 @@ include('include/db.php');
 
 $pseudo = $_POST['nom'];
 $note = $_POST['note'];
-$avis = $_POST['message'];
+$avis = filtrer_gros_mots($_POST['message']); // Filtrage des gros mots
 $id_film = $_POST['id_film'];
 
 // Validation des données

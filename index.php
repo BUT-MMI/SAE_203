@@ -31,9 +31,9 @@
                         <img src="img\image-innacessible.png" alt="Pas d'affiche">
                     <?php } ?>
                     <div class="infos-carte">
-                        <p class="titre-film"><?php echo $row['titre']; ?></p>
-                        <p class="annee-film"><?php echo $row['annee']; ?></p>
-                        <p class="genre-film"><?php echo $row['libelle']; ?></p>
+                        <p class="titre-film"><?php echo h($row['titre']); ?></p>
+                        <p class="annee-film"><?php echo h($row['annee']); ?></p>
+                        <p class="genre-film"><?php echo h($row['libelle']); ?></p>
                     </div>
                 </a>
             </article>

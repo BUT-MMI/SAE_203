@@ -6,12 +6,12 @@
  * - https://www.youtube.com/watch?v=VIDEO_ID
  * - https://youtu.be/VIDEO_ID
  * - https://www.youtube.com/embed/VIDEO_ID
- * - etc.
  * 
  * @param string $url L'URL entrée par l'utilisateur
  * @return string L'URL convertie en format embed (ou l'originale si non reconnue)
  */
-function getYouTubeEmbedUrl($url) {
+function getYouTubeEmbedUrl($url)
+{
     // Si c'est déjà une URL embed, on ne fait rien
     if (strpos($url, 'youtube.com/embed/') !== false) {
         return $url;
@@ -19,11 +19,11 @@ function getYouTubeEmbedUrl($url) {
 
     $videoId = '';
 
-    // Format watch?v=...
+    // Trouve l'id de la vidéo par rapport a l'url avec la fonction preg_match et le met dans $videoId
     if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
         $videoId = $match[1];
     }
-
+    // Si l'ID est trouvé, on le met dans l'URL embed
     if (!empty($videoId)) {
         return "https://www.youtube.com/embed/" . $videoId;
     }

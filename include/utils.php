@@ -1,7 +1,10 @@
 <?php
 
 /**
- * Convertit n'importe quelle URL YouTube en URL embed compatible avec un iframe.
+ * 
+ * Ce fichier sert à convertir une URL YouTube classique en URL embed pour pouvoir l'afficher dans un iframe sur la page d'un film.
+ * 
+ * 
  * Supporte les formats :
  * - https://www.youtube.com/watch?v=VIDEO_ID
  * - https://youtu.be/VIDEO_ID

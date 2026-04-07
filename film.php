@@ -48,30 +48,36 @@
 
     <!-- Informations du film -->
     <div class="film-infos">
-      <h1 class="film-titre"><?php echo h($film['titre']); ?></h1>
+      <<<<<<< HEAD <h1 class="film-titre"><?php echo h($film['titre']); ?></h1>
+        =======
+        <div class="film-titre-container">
+          <h1 class="film-titre"><?php echo $film['titre']; ?></h1>
+          <a href="modifier_film.php?id=<?php echo $id_film; ?>" class="btn-modifier">✏️ Modifier</a>
+        </div>
+        >>>>>>> 4156233d6348f6365a1044ebc45d571e8f43410f
 
-      <div class="film-meta">
-        <span><?php echo h($film['annee']); ?></span>
-        <span><?php echo h($film['duree']); ?> min</span>
-        <span class="badge-genre"><?php echo h($film['libelle']); ?></span>
-      </div>
+        <div class="film-meta">
+          <span><?php echo h($film['annee']); ?></span>
+          <span><?php echo h($film['duree']); ?> min</span>
+          <span class="badge-genre"><?php echo h($film['libelle']); ?></span>
+        </div>
 
-      <?php if ($notes['nb_commentaires'] > 0) { ?>
-        <p class="film-note-moyenne">
-          ⭐ <?php echo number_format($notes['note_moyenne'], 1); ?> / 5
-          (<?php echo $notes['nb_commentaires']; ?> avis)
-        </p>
-      <?php } else { ?>
-        <p class="film-note-moyenne" style="color: #9a9ab0;">Pas encore de note</p>
-      <?php } ?>
+        <?php if ($notes['nb_commentaires'] > 0) { ?>
+          <p class="film-note-moyenne">
+            ⭐ <?php echo number_format($notes['note_moyenne'], 1); ?> / 5
+            (<?php echo $notes['nb_commentaires']; ?> avis)
+          </p>
+        <?php } else { ?>
+          <p class="film-note-moyenne" style="color: #9a9ab0;">Pas encore de note</p>
+        <?php } ?>
 
-      <p class="film-resume"><?php echo h($film['resume']); ?></p>
+        <p class="film-resume"><?php echo h($film['resume']); ?></p>
 
-      <p class="film-detail-ligne"><strong>Réalisateur :</strong> <?php echo h($film['realisateur']); ?></p>
-      <p class="film-detail-ligne"><strong>Acteurs :</strong> <?php echo h($film['acteurs']); ?></p>
+        <p class="film-detail-ligne"><strong>Réalisateur :</strong> <?php echo h($film['realisateur']); ?></p>
+        <p class="film-detail-ligne"><strong>Acteurs :</strong> <?php echo h($film['acteurs']); ?></p>
 
-      <!-- Bouton pour modifier le film -->
-      <a href="modifier_film.php?id=<?php echo $id_film; ?>" class="btn-modifier">✏️ Modifier ce film</a>
+        <!-- Bouton pour modifier le film -->
+        <a href="modifier_film.php?id=<?php echo $id_film; ?>" class="btn-modifier">✏️ Modifier ce film</a>
     </div>
 
   </div>

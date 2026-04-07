@@ -11,7 +11,7 @@
         Crousty Movies est votre destination ultime pour découvrir, noter et partager vos films préférés.
       </p>
       <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-        ↑ Haut de page
+        ↑ Revenir en haut
       </button>
     </div>
     <div class="footer-links">

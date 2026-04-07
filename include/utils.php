@@ -13,6 +13,7 @@
 function getYouTubeEmbedUrl($url)
 {
     // Si c'est déjà une URL embed, on ne fait rien
+    // https://www.php.net/manual/fr/function.strpos.php
     if (strpos($url, 'youtube.com/embed/') !== false) {
         return $url;
     }
@@ -20,6 +21,7 @@ function getYouTubeEmbedUrl($url)
     $videoId = '';
 
     // Trouve l'id de la vidéo par rapport a l'url avec la fonction preg_match et le met dans $videoId
+    // https://www.php.net/manual/fr/function.preg-match.php
     if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
         $videoId = $match[1];
     }

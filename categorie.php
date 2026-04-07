@@ -43,7 +43,24 @@ require_once 'include/db.php';
 
 	?>
 
-	<h2 class="titre-section">Tous les films</h2>
+	
+
+<?php
+if ($cat_genre === true) {
+	$sth = $dbh->prepare('SELECT libelle, description FROM genre
+						WHERE libelle = :libelle');
+		$values = array('libelle' => $_GET['cat']);
+		$sth->execute($values);
+		$genre = $sth->fetch();
+		echo '<h2 class="titre-section">' . htmlspecialchars($genre['libelle']) . '</h2>';
+		echo '<p>' . htmlspecialchars($genre['description']) . '</p>';
+
+} else if ($_GET['cat'] == 'nouveaux') {
+	echo '<h2 class="titre-section">Nouveautés</h2>';
+} else if ($_GET['cat'] == 'notes') {
+	echo '<h2 class="titre-section">Mieux notés</h2>';
+}
+?>
 
 	<section class="grille-films">
 		<?php foreach ($films as $film) { ?>

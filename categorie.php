@@ -61,7 +61,7 @@ require_once 'include/db.php';
 			</article>
 		<?php } ?>
 	</section>
-
+<?php include('include/pied.php'); ?>
 </body>
 
 </html>

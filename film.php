@@ -48,7 +48,10 @@
 
     <!-- Informations du film -->
     <div class="film-infos">
-      <h1 class="film-titre"><?php echo $film['titre']; ?></h1>
+      <div class="film-titre-container">
+        <h1 class="film-titre"><?php echo $film['titre']; ?></h1>
+        <a href="modifier_film.php?id=<?php echo $id_film; ?>" class="btn-modifier">✏️ Modifier</a>
+      </div>
 
       <div class="film-meta">
         <span><?php echo $film['annee']; ?></span>
@@ -69,9 +72,6 @@
 
       <p class="film-detail-ligne"><strong>Réalisateur :</strong> <?php echo $film['realisateur']; ?></p>
       <p class="film-detail-ligne"><strong>Acteurs :</strong> <?php echo $film['acteurs']; ?></p>
-
-      <!-- Bouton pour modifier le film -->
-      <a href="modifier_film.php?id=<?php echo $id_film; ?>" class="btn-modifier">✏️ Modifier ce film</a>
     </div>
 
   </div>

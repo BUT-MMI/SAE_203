@@ -1,35 +1,90 @@
 <?php
 
 /**
- * Convertit n'importe quelle URL YouTube en URL embed compatible avec un iframe.
- * Supporte les formats :
- * - https://www.youtube.com/watch?v=VIDEO_ID
- * - https://youtu.be/VIDEO_ID
- * - https://www.youtube.com/embed/VIDEO_ID
- * 
+ * Fonction h ($texte)
+ * Sécurise l'affichage en convertissant les caractères spéciaux en entités HTML.
+ * À utiliser systématiquement lors d'un 'echo' de données provenant de la base de données.
+ * @param string $texte Le texte à protéger
+ * @return string Le texte protégé
+ */
+function h($texte)
+{
+    return htmlspecialchars($texte, ENT_QUOTES, 'UTF-8');
+}
+
+/**
+ * Convertit une URL YouTube en URL embed compatible avec un iframe.
+ * Source : https://stackoverflow.com/questions/2936467/parse-youtube-video-id-using-preg-match
  * @param string $url L'URL entrée par l'utilisateur
- * @return string L'URL convertie en format embed (ou l'originale si non reconnue)
+ * @return string L'URL formatée pour l'iframe
  */
 function getYouTubeEmbedUrl($url)
 {
     // Si c'est déjà une URL embed, on ne fait rien
-    // https://www.php.net/manual/fr/function.strpos.php
     if (strpos($url, 'youtube.com/embed/') !== false) {
         return $url;
     }
 
-    $videoId = '';
+    // On cherche l'ID de la vidéo avec une expression régulière simple
+    // On capture les 11 caractères de l'ID YouTube
+    $pattern = '%(?:youtube\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i';
 
-    // Trouve l'id de la vidéo par rapport a l'url avec la fonction preg_match et le met dans $videoId
-    // https://www.php.net/manual/fr/function.preg-match.php
-    if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
-        $videoId = $match[1];
-    }
-    // Si l'ID est trouvé, on le met dans l'URL embed
-    if (!empty($videoId)) {
-        return "https://www.youtube.com/embed/" . $videoId;
+    if (preg_match($pattern, $url, $match)) {
+        return "https://www.youtube.com/embed/" . $match[1];
     }
 
-    // Si on ne trouve rien, on renvoie l'URL telle quelle (peut-être ce n'est pas du YouTube)
     return $url;
+}
+
+/**
+ * Retourne une chaîne de caractères représentant une note sous forme d'étoiles.
+ * @param int $note La note sur 5
+ * @return string Les étoiles HTML
+ */
+function afficher_etoiles($note)
+{
+    $etoiles = "";
+    // On boucle de 1 à 5
+    for ($i = 1; $i <= 5; $i++) {
+        if ($i <= $note) {
+            $etoiles .= "⭐"; // Étoile pleine
+        } else {
+            $etoiles .= "☆"; // Étoile vide
+        }
+    }
+    return $etoiles;
+}
+
+/**
+ * Formate une date SQL (AAAA-MM-JJ) au format français (JJ/MM/AAAA).
+ * @param string $date_sql La date provenant de la base de données
+ * @return string La date au format FR
+ */
+function formater_date($date_sql)
+{
+    // On transforme la chaîne en "timestamp" (temps PHP)
+    $timestamp = strtotime($date_sql);
+    // On retourne le format jour/mois/année
+    return date("d/m/Y", $timestamp);
+}
+
+/**
+ * Filtre les "gros mots" dans un texte en les remplaçant par des astérisques.
+ * @param string $texte Le message à filtrer
+ * @return string Le texte filtré
+ */
+function filtrer_gros_mots($texte)
+{
+    // Liste simple de mots à filtrer (à compléter si besoin)
+    $gros_mots = array('zut', 'crotte', 'flûte', 'merde', 'con');
+
+    // Pour chaque mot de la liste
+    foreach ($gros_mots as $mot) {
+        // On remplace le mot par des étoiles de la même longueur
+        $remplacement = str_repeat("*", strlen($mot));
+        // str_ireplace ignore la casse (MAJUSCULES/minuscules)
+        $texte = str_ireplace($mot, $remplacement, $texte);
+    }
+
+    return $texte;
 }

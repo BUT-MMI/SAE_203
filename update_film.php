@@ -6,7 +6,6 @@
  */
 
 include('include/db.php');
-include('include/utils.php');
 
 // On récupère toutes les données du formulaire
 $id_film = $_POST['id_film'];

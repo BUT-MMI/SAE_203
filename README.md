@@ -1,7 +1,6 @@
 # SAE_203
-project
 
- The
+The
 
 ## Charte Graphique
 
@@ -15,10 +14,11 @@ Couleur d'ombre : #5E4B41
 
 Countour rouge : border: 1px solid rgba(233, 69, 96, 0.4)
 
-##
+## Fonctionnalités
+
 clique logo = accueil
-clique genre= menu deroulant 
+clique genre= menu deroulant
 clique nouveauté = page avec les derniere sorti
-clique mieux noté = page des film classé par leurs note 
+clique mieux noté = page des film classé par leurs note
 clique sur ajouter un film = possibilité de de rentré les info d un nouveau filM
-clique sur un film = permet de voir les info du film et d ajouter un commentaire sur le film et une possibilité de modifier des info 
+clique sur un film = permet de voir les info du film et d ajouter un commentaire sur le film et une possibilité de modifier des info

@@ -1,6 +1,4 @@
-<?php
-require_once 'include/db.php';
-?>
+<?php require_once 'include/db.php';?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -13,9 +11,7 @@ require_once 'include/db.php';
 </head>
 
 <body>
-	<?php
-	include('include/entete.php');
-	?>
+	<?php include('include/entete.php'); ?>
 
 	<section class="section-formulaire">
 		<h2>Ajouter un film</h2>

@@ -9,9 +9,7 @@
 </head>
 
 <body>
-    <?php
-    include('include/entete.php');
-    ?>
+    <?php include('include/entete.php'); ?>
 
     <?php
     // On récupère tous les films avec leur genre

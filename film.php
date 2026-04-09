@@ -11,9 +11,7 @@
 </head>
 
 <body>
-  <?php
-  include('include/entete.php');
-  ?>
+  <?php include('include/entete.php'); ?>
 
   <?php
   // On récupère les informations du film

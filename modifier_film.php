@@ -1,11 +1,4 @@
-<!--
-Page de modification d'un film. Similaire à nouveau_film.php mais :
-- On récupère l'ID du film avec $_GET['id']
-- On pré-remplit le formulaire avec les données existantes du film
-- Le formulaire envoie vers update_film.php
--->
-<?php require_once 'include/db.php';
-?>
+<?php require_once 'include/db.php';?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -17,9 +10,7 @@ Page de modification d'un film. Similaire à nouveau_film.php mais :
 </head>
 
 <body>
-    <?php
-    include('include/entete.php');
-    ?>
+    <?php include('include/entete.php');?>
 
     <?php
     $id_film = $_GET['id'];

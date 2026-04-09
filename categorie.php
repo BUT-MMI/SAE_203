@@ -1,6 +1,4 @@
-<?php
-require_once 'include/db.php';
-?>
+<?php require_once 'include/db.php';?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -13,11 +11,8 @@ require_once 'include/db.php';
 </head>
 
 	<body>
-
 		<?php
-
 		include 'include/entete.php';
-
 		$cat_genre = false;
 
 		if ($_GET['cat'] == 'nouveaux') { // On trie les films par ordre d'ajout

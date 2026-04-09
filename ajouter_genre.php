@@ -17,3 +17,4 @@ if (strlen($libelle) == 0) {
     header('Location: nouveau_film.php');
     exit();
 }
+?>

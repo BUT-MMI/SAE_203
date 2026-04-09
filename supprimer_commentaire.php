@@ -13,5 +13,4 @@ $sth->execute($values);
 // On redirige vers la page du film
 header('Location: film.php?id=' . $id_film);
 exit();
-
 ?>

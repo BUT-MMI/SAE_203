@@ -107,3 +107,5 @@ Page de modification d'un film. Similaire à nouveau_film.php mais :
     </section>
 
     <?php include('include/pied.php'); ?>
+</body>
+</html>

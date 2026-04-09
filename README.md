@@ -2,6 +2,10 @@
 
 ![Crousty Movies](img/croutsy.png)
 
+#### Lien -> https://a-pedagoarles-mmi.aix.univ-amu.fr/r25012763/sae203/index.php
+#### PHPMyAdmin -> https://a-pedagoarles-mmi.aix.univ-amu.fr/phpmyadmin/index.php
+
+
 **Crousty Movies** est un catalogue de films interactif développé dans le cadre de la SAE 203 du BUT MMI. Ce projet PHP/MySQL propose une interface web responsive permettant de consulter, ajouter et commenter des films, avec une gestion dynamique des genres et des notes sous forme d'émojis poulet.
 
 ---

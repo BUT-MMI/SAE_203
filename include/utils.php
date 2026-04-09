@@ -21,6 +21,7 @@ function h($texte)
 function getYouTubeEmbedUrl($url)
 {
     // Si c'est déjà une URL embed, on ne fait rien
+    // strpos() cherche youtube.com/embed/ dans $url
     if (strpos($url, 'youtube.com/embed/') !== false) {
         return $url;
     }
@@ -32,7 +33,7 @@ function getYouTubeEmbedUrl($url)
     if (preg_match($pattern, $url, $match)) {
         return "https://www.youtube.com/embed/" . $match[1];
     }
-
+    // preg_match() cherche $pattern dans $url et stocke le résultat dans $match
     return $url;
 }
 

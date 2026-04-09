@@ -32,7 +32,7 @@ function getYouTubeEmbedUrl($url)
     if (preg_match($pattern, $url, $match)) {
         return "https://www.youtube.com/embed/" . $match[1];
     }
-
+    // preg_match() cherche $pattern dans $url et stocke le résultat dans $match
     return $url;
 }
 

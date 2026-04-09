@@ -22,7 +22,7 @@ require_once 'include/db.php';
 		if ($_GET['cat'] == 'nouveaux') { // On trie les films par ordre d'ajout
 			$sth = $dbh->prepare('SELECT film.idfilm, film.titre, film.annee, film.affiche, genre.libelle, AVG(commentaire.note) AS moyenne_note FROM film
 								INNER JOIN genre ON film.idgenre = genre.idgenre
-								INNER JOIN commentaire ON commentaire.idfilm = film.idfilm
+								LEFT JOIN commentaire ON commentaire.idfilm = film.idfilm
 								GROUP BY film.idfilm, film.titre, film.annee, film.affiche, genre.libelle
 								ORDER BY idfilm DESC LIMIT 10');
 			$sth->execute();
@@ -41,7 +41,7 @@ require_once 'include/db.php';
 			$cat_genre = true; // On utilise cette variable plus tard pour ne pas afficher le genre dans les cartes de films (pour pas avoir de répétition du style "action - action - action")
 			$sth = $dbh->prepare('SELECT film.idfilm, film.titre, film.annee, film.affiche, genre.libelle, AVG(commentaire.note) AS moyenne_note FROM film
 								INNER JOIN genre ON film.idgenre = genre.idgenre
-								INNER JOIN commentaire ON commentaire.idfilm = film.idfilm
+								LEFT JOIN commentaire ON commentaire.idfilm = film.idfilm
 								WHERE genre.libelle = :libelle
 								GROUP BY film.idfilm, film.titre, film.annee, film.affiche, genre.libelle');
 			$values = array('libelle' => $_GET['cat']);

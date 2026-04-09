@@ -2,21 +2,21 @@
 
 /**
  * Fonction h ($texte)
- * Sécurise l'affichage en convertissant les caractères spéciaux en entités HTML.
+ * Sécurise l'affichage en convertissant les caractères spéciaux en HTML.
  * À utiliser systématiquement lors d'un 'echo' de données provenant de la base de données.
- * @param string $texte Le texte à protéger
- * @return string Le texte protégé
+ * prend : Le texte à protéger
+ * donne : Le texte protégé
  */
 function h($texte)
 {
-    return htmlspecialchars($texte, ENT_QUOTES, 'UTF-8');
+    return htmlspecialchars($texte, ENT_QUOTES, 'UTF-8'); // ENT_QUOTES pour que les ' simples et les " doubles soient convertis
 }
 
 /**
  * Convertit une URL YouTube en URL embed compatible avec un iframe.
  * Source : https://stackoverflow.com/questions/2936467/parse-youtube-video-id-using-preg-match
- * @param string $url L'URL entrée par l'utilisateur
- * @return string L'URL formatée pour l'iframe
+ * prend : L'URL entrée par l'utilisateur
+ * donne : L'URL formatée pour l'iframe
  */
 function getYouTubeEmbedUrl($url)
 {
@@ -25,8 +25,8 @@ function getYouTubeEmbedUrl($url)
         return $url;
     }
 
-    // On cherche l'ID de la vidéo avec une expression régulière simple
-    // On capture les 11 caractères de l'ID YouTube
+    // On cherche l'ID de la vidéo avec le pattern ci-dessous
+    // On capture les caractères de l'ID YouTube
     $pattern = '%(?:youtube\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i';
 
     if (preg_match($pattern, $url, $match)) {
@@ -38,8 +38,8 @@ function getYouTubeEmbedUrl($url)
 
 /**
  * Retourne une chaîne de caractères représentant une note sous forme d'étoiles.
- * @param int $note La note sur 5
- * @return string Les étoiles HTML
+ * prend : La note sur 5
+ * donne : Les étoiles HTML
  */
 function afficher_etoiles($note)
 {
@@ -57,8 +57,8 @@ function afficher_etoiles($note)
 
 /**
  * Formate une date SQL (AAAA-MM-JJ) au format français (JJ/MM/AAAA).
- * @param string $date_sql La date provenant de la base de données
- * @return string La date au format FR
+ * prend : La date provenant de la base de données
+ * donne : La date au format FR
  */
 function formater_date($date_sql)
 {
@@ -70,12 +70,12 @@ function formater_date($date_sql)
 
 /**
  * Filtre les "gros mots" dans un texte en les remplaçant par des astérisques.
- * @param string $texte Le message à filtrer
- * @return string Le texte filtré
+ * prend : Le message à filtrer
+ * donne : Le texte filtré
  */
 function filtrer_gros_mots($texte)
 {
-    // Liste simple de mots à filtrer (à compléter si besoin)
+    // Liste des mots à filtrer
     $gros_mots = array(
         'merde',
         'con',
@@ -112,7 +112,9 @@ function filtrer_gros_mots($texte)
         $remplacement = str_repeat("*", strlen($mot));
         // str_ireplace ignore la casse (MAJUSCULES/minuscules)
         $texte = str_ireplace($mot, $remplacement, $texte);
-    }
+    } //str_ireplace avec des astérisques($remplacement) à la place des gros mots($mot) dans $texte
 
     return $texte;
 }
+
+?>

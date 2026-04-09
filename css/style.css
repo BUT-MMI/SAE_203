@@ -37,10 +37,10 @@
 
   --transition: all 0.3s ease;
 
-  --margin-section: 50px;
-  --margin-section-sm: 30px;
-  --padding-section: 40px;
-  --padding-section-sm: 20px;
+  --margin-section: 5%;
+  --margin-section-sm: 3%;
+  --padding-section: 4%;
+  --padding-section-sm: 2.5%;
 }
 
 body {
@@ -64,12 +64,18 @@ body {
 .header-wrapper {
   position: sticky;
   z-index: 100;
-  margin: var(--margin-section) var(--margin-section) 35px var(--margin-section);
+  margin: var(--margin-section-sm) var(--margin-section);
+}
+
+header {
+  position: sticky;
+  z-index: 100;
+  margin: 0;
 }
 
 header {
   background-color: var(--color-bg-accent);
-  padding: 0 30px;
+  padding: 0 4%;
   height: 60px;
   display: flex;
   align-items: center;
@@ -177,12 +183,6 @@ nav a:hover {
   color: var(--color-bg-accent);
 }
 
-/* ── Contenu factice pour tester le scroll ── */
-main {
-  padding: 40px 30px;
-  height: 200vh;
-  /* page très longue pour tester sticky */
-}
 
 /* Le bouton suivant à été intégré depuis cette page https://www.sliderrevolution.com/resources/css-3d-buttons/ */
 .Ajout2Film, .Ajout2Film::before {
@@ -233,7 +233,9 @@ main {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 2.5%;
+  row-gap: 2.5%;
+  align-content: flex-start;
   justify-content: center;
   margin: 0 var(--margin-section);
 }
@@ -243,15 +245,17 @@ main {
   border-radius: var(--border-radius);
   border: 1px solid rgba(233, 69, 96, 0.2);
   box-shadow: var(--shadow-light), var(--shadow-accent);
-  width: 280px;
-  max-width: 90vw;
-  height: 420px;
+  width: 23%;
+  min-width: 200px;
+  max-width: 280px;
+  height: auto;
   text-align: center;
   transition: var(--transition);
   cursor: pointer;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  margin: 0 0 2.5% 0;
 }
 
 .carte-film:hover {
@@ -270,7 +274,7 @@ main {
 
 .carte-film img {
   width: 100%;
-  height: 280px;
+  aspect-ratio: 2 / 3;
   object-fit: cover;
   border-radius: 4px 4px 0 0;
   flex-shrink: 0;
@@ -303,8 +307,8 @@ main {
 }
 
 .badge-genre {
-  background: var(--color-primary) !important;
-  color: var(--color-bg-accent) !important;
+  background: var(--color-primary);
+  color: var(--color-bg-accent);
   font-weight: bold;
   padding: 4px 8px;
   border-radius: var(--border-radius-sm);
@@ -317,7 +321,7 @@ main {
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--color-primary);
-  margin: var(--margin-section-sm) var(--margin-section) 15px var(--margin-section);
+  margin: var(--margin-section-sm) var(--margin-section) 3% var(--margin-section);
 }
 
 .titre-film {
@@ -347,8 +351,8 @@ main {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 60px 80px;
-    gap: 40px;
+    padding: 4% 6%;
+    gap: 4%;
 }
 
 .footer-brand {
@@ -468,8 +472,8 @@ main {
 /* ── PAGES DÉTAIL FILMS ── */
 .film-detail {
     display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 40px;
+    grid-template-columns: minmax(250px, 30%) 1fr;
+    gap: 3%;
     margin: var(--margin-section) var(--margin-section);
     background: var(--color-bg-accent);
     padding: var(--padding-section);
@@ -594,7 +598,8 @@ main {
 
 .bande-annonce iframe {
     width: 100%;
-    height: 500px;
+    min-height: 300px;
+    aspect-ratio: 16 / 9;
     border-radius: 12px;
     border: none;
 }
@@ -619,8 +624,8 @@ main {
 
 .commentaire {
     background: #F5EFE1;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 1.5%;
+    margin-bottom: 2.5%;
     border-radius: 12px;
     border-left: 4px solid #EA5368;
     transition: box-shadow 0.3s ease;
@@ -693,10 +698,10 @@ main {
 }
 
 .formulaire-groupe {
-    margin-bottom: 20px;
+    margin-bottom: 2.5%;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0.8rem;
 }
 
 .formulaire-groupe label {
@@ -744,190 +749,10 @@ main {
 }
 
 /* ── DESCRIPTION DES GENRES ── */
-.genre-description {
-    background: var(--color-bg-accent);
-    border-radius: var(--border-radius);
-    border: 1px solid rgba(233, 69, 96, 0.4);
-    box-shadow: var(--shadow-light), var(--shadow-accent);
-    margin: 0 var(--margin-section) var(--margin-section-sm) var(--margin-section);
-    padding: var(--padding-section-sm);
-    transition: var(--transition);
-}
-
-.genre-description:hover {
-    box-shadow: var(--shadow-medium), var(--shadow-accent-heavy);
-    border-color: rgba(233, 69, 96, 0.6);
-}
-
 .genre-description p {
-    margin: 0;
+    margin: 0 10% 4% 10%;
     color: var(--color-text);
     font-size: 1rem;
     line-height: 1.6;
     text-align: justify;
-}
-
-/* Responsivité - Breakpoints fluides */
-@media (max-width: 1024px) {
-    /* Tablettes */
-    :root {
-        --margin-section: 40px;
-        --margin-section-sm: 25px;
-    }
-
-    .genre-description {
-        margin: 0 var(--margin-section) var(--margin-section-sm) var(--margin-section);
-        padding: 25px;
-    }
-
-    .genre-description p {
-        font-size: 0.95rem;
-    }
-
-    .carte-film {
-        width: 240px;
-        height: 360px;
-    }
-
-    .carte-film img {
-        height: 240px;
-    }
-
-    .grille-films {
-        gap: 15px;
-    }
-}
-
-@media (max-width: 768px) {
-    /* Mobiles */
-    :root {
-        --margin-section: 20px;
-        --margin-section-sm: 15px;
-    }
-
-    .genre-description {
-        margin: 0 var(--margin-section) var(--margin-section-sm) var(--margin-section);
-        padding: var(--padding-section-sm);
-    }
-
-    .genre-description p {
-        font-size: 0.9rem;
-        text-align: left;
-    }
-
-    header {
-        padding: 0 20px;
-        height: 60px;
-    }
-
-    .logo img {
-        width: 40px;
-        height: 40px;
-    }
-
-    .logo span {
-        font-size: 20px;
-    }
-
-    nav {
-        gap: 15px;
-    }
-
-    nav a,
-    .dropdown-btn {
-        font-size: 16px;
-    }
-
-    .carte-film {
-        width: 180px;
-        height: 270px;
-    }
-
-    .carte-film img {
-        height: 180px;
-    }
-
-    .grille-films {
-        gap: 12px;
-    }
-
-    .infos-carte {
-        padding: 8px;
-    }
-
-    .carte-meta {
-        gap: 6px;
-    }
-
-    .badge-genre {
-        font-size: 0.7rem;
-        padding: 3px 6px;
-    }
-
-    .carte-annee {
-        font-size: 0.75rem;
-        padding: 3px 6px;
-    }
-}
-
-@media (max-width: 480px) {
-    /* Petits mobiles */
-    :root {
-        --margin-section: 15px;
-        --margin-section-sm: 10px;
-    }
-
-    .genre-description {
-        margin: 0 var(--margin-section) var(--margin-section-sm) var(--margin-section);
-        padding: 15px;
-    }
-
-    .genre-description p {
-        font-size: 0.9rem;
-        text-align: left;
-    }
-
-    header {
-        padding: 0 15px;
-        height: 60px;
-    }
-
-    .logo img {
-        width: 35px;
-        height: 35px;
-    }
-
-    .logo span {
-        font-size: 18px;
-    }
-
-    nav {
-        gap: 10px;
-    }
-
-    nav a,
-    .dropdown-btn {
-        font-size: 14px;
-    }
-
-    .carte-film {
-        width: 140px;
-        height: 210px;
-    }
-
-    .carte-film img {
-        height: 140px;
-    }
-
-    .grille-films {
-        gap: 8px;
-    }
-
-    .infos-carte {
-        padding: 6px;
-    }
-
-    .titre-film {
-        font-size: 0.9rem;
-    }
 }

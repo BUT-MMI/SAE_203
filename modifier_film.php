@@ -11,7 +11,8 @@ Page de modification d'un film. Similaire à nouveau_film.php mais :
 
 <head>
     <meta charset="utf-8">
-    <title>Crousti Movies - Modifier un film</title>
+    <title>Crousty Movies - Modifier un film</title>
+    <link rel="icon" href="img/croutsy.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 

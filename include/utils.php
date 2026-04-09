@@ -47,9 +47,9 @@ function afficher_etoiles($note)
     // On boucle de 1 à 5
     for ($i = 1; $i <= 5; $i++) {
         if ($i <= $note) {
-            $etoiles .= "⭐"; // Étoile pleine
+            $etoiles .= '<span class="note-poulet note-poulet--plein">🍗</span>';
         } else {
-            $etoiles .= "☆"; // Étoile vide
+            $etoiles .= '<span class="note-poulet note-poulet--vide">🍗</span>';
         }
     }
     return $etoiles;

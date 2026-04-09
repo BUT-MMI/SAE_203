@@ -3,7 +3,8 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Crousti Movies - Ajouter un genre</title>
+	<title>Crousty Movies - Ajouter un genre</title>
+	<link rel="icon" href="img/croutsy.png" type="image/png">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 

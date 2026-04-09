@@ -5,7 +5,8 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Crousti Movies - Film</title>
+  <title>Crousty Movies - Film</title>
+  <link rel="icon" href="img/croutsy.png" type="image/png">
   <link rel="stylesheet" href="css/style.css">
 </head>
 

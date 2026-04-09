@@ -25,7 +25,7 @@
     </div>
   </div>
   <div class="footer-copyright">
-    <p>© 2026 Crousti Movies. Tous droits réservés. Ce site est un projet de la SAE 203.<br>
+    <p>© 2026 Crousty Movies. Tous droits réservés. Ce site est un projet de la SAE 203.<br>
       Développé par <a href="mailto:gabriel.anderlucci@etu.univ-amu.fr">Gabriel ANDERLUCCI</a>, <a href="mailto:mathis.roberdeau@etu.univ-amu.fr">Mathis ROBERDEAU</a>, <a href="mailto:ulysse.soucaret@etu.univ-amu.fr">Ulysse SOUCARET</a>, <a href="mailto:ewan.aissou@etu.univ-amu.fr">Ewan AISSOU</a> &
       <a href="mailto:florentin.merle@etu.univ-amu.fr">Florentin MERLE</a>.</p>
   </div>

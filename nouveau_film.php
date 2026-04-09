@@ -7,7 +7,8 @@ require_once 'include/db.php';
 
 <head>
 	<meta charset="utf-8">
-	<title>Crousti Movies - Ajouter un film</title>
+	<title>Crousty Movies - Ajouter un film</title>
+	<link rel="icon" href="img/croutsy.png" type="image/png">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 

@@ -14,7 +14,11 @@
 
     <?php
     // On récupère tous les films avec leur genre
-    $sth = $dbh->prepare('SELECT film.*, genre.libelle FROM film JOIN genre ON film.idgenre = genre.idgenre ORDER BY film.titre');
+    $sth = $dbh->prepare('SELECT film.*, genre.libelle, AVG(commentaire.note) AS moyenne_note FROM film
+                        INNER JOIN genre ON film.idgenre = genre.idgenre
+                        LEFT JOIN commentaire ON commentaire.idfilm = film.idfilm
+                        GROUP BY film.idfilm, film.titre, film.annee, film.affiche, genre.libelle
+                        ORDER BY film.idfilm');
     $sth->execute();
     $result = $sth->fetchAll();
     ?>
@@ -33,6 +37,7 @@
                     <div class="infos-carte">
                         <p class="titre-film"><?php echo htmlspecialchars($row['titre']); ?></p>
                         <div class="carte-meta">
+                            <span class="badge-note"><?php echo number_format($row['moyenne_note'], 1)."🍗"; ?></span>
                             <span class="carte-annee"><?php echo htmlspecialchars($row['annee']); ?></span>
                             <span class="badge-genre"><?php echo htmlspecialchars($row['libelle']); ?></span>
                         </div>

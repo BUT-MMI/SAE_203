@@ -21,6 +21,7 @@ function h($texte)
 function getYouTubeEmbedUrl($url)
 {
     // Si c'est déjà une URL embed, on ne fait rien
+    // strpos() cherche youtube.com/embed/ dans $url
     if (strpos($url, 'youtube.com/embed/') !== false) {
         return $url;
     }

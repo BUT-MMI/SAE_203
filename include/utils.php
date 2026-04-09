@@ -76,7 +76,35 @@ function formater_date($date_sql)
 function filtrer_gros_mots($texte)
 {
     // Liste simple de mots à filtrer (à compléter si besoin)
-    $gros_mots = array('zut', 'crotte', 'flûte', 'merde', 'con');
+    $gros_mots = array(
+        'merde',
+        'con',
+        'conne',
+        'connard',
+        'connasse',
+        'putain',
+        'pute',
+        'salope',
+        'salopard',
+        'nique',
+        'enculé',
+        'enculée',
+        'enculer',
+        'bordel',
+        'salaud',
+        'pétasse',
+        'trouduc',
+        'bouffon',
+        'débile',
+        'abruti',
+        'crevard',
+        'enfoiré',
+        'pouffiasse',
+        'chier',
+        'cul',
+        'bâtard',
+        'tocard'
+    );
 
     // Pour chaque mot de la liste
     foreach ($gros_mots as $mot) {

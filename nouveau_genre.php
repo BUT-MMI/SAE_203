@@ -32,3 +32,5 @@
 	</section>
 
 	<?php include('include/pied.php'); ?>
+	</body>
+</html>

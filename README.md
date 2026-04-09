@@ -168,12 +168,10 @@ Le schéma comprend 3 tables principales :
 5. **Accéder au site** : http://localhost/SAE_203
 
 ### AVERTISSEMENT
-- Si une erreur de driver est siganler, veuillez ajouter les lignes suivantes :
+- Si une erreur de driver est signaler, veuillez ajouter les lignes suivantes a la fin du fichier php.ini acessible dans la config de Apache via XAMPP. Supabase utilise un autre système que MySQL et à donc besoin de driver alternatif.
 
 extension=pdo_pgsql
 extension=pgsql
-
-A la fin du fichier php.ini acessible dans la config de Apache via XAMPP. Supabase utilise un autre système que MySQL et à donc besoin de driver alternatif.
 
 ### Configuration Alternative
 - Pour un déploiement distant, utiliser `exclude/db-phpmyadmin.php` avec les paramètres du serveur

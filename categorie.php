@@ -20,8 +20,10 @@ require_once 'include/db.php';
 		$cat_genre = false;
 
 		if ($_GET['cat'] == 'nouveaux') { // On trie les films par ordre d'ajout
-			$sth = $dbh->prepare('SELECT idfilm, titre, annee, affiche, genre.libelle FROM film 
+			$sth = $dbh->prepare('SELECT film.idfilm, film.titre, film.annee, film.affiche, genre.libelle, AVG(commentaire.note) AS moyenne_note FROM film
 								INNER JOIN genre ON film.idgenre = genre.idgenre
+								INNER JOIN commentaire ON commentaire.idfilm = film.idfilm
+								GROUP BY film.idfilm, film.titre, film.annee, film.affiche, genre.libelle
 								ORDER BY idfilm DESC LIMIT 10');
 			$sth->execute();
 			$films = $sth->fetchAll();
@@ -37,9 +39,11 @@ require_once 'include/db.php';
 
 		} else { // On ne récupère que les films du genre choisi
 			$cat_genre = true; // On utilise cette variable plus tard pour ne pas afficher le genre dans les cartes de films (pour pas avoir de répétition du style "action - action - action")
-			$sth = $dbh->prepare('SELECT idfilm, titre, annee, affiche, genre.libelle FROM film
+			$sth = $dbh->prepare('SELECT film.idfilm, film.titre, film.annee, film.affiche, genre.libelle, AVG(commentaire.note) AS moyenne_note FROM film
 								INNER JOIN genre ON film.idgenre = genre.idgenre
-								WHERE genre.libelle = :libelle');
+								INNER JOIN commentaire ON commentaire.idfilm = film.idfilm
+								WHERE genre.libelle = :libelle
+								GROUP BY film.idfilm, film.titre, film.annee, film.affiche, genre.libelle');
 			$values = array('libelle' => $_GET['cat']);
 			$sth->execute($values);
 			$films = $sth->fetchAll();
@@ -72,10 +76,13 @@ require_once 'include/db.php';
 						<img src="<?php echo $film['affiche']; ?>" alt="Affiche de <?php echo $film['titre']; ?>">
 						<div class="infos-carte">
 							<p class="titre-film"><?php echo $film['titre']; ?></p>
-							<p class="annee-film"><?php echo $film['annee']; ?></p>
-							<?php if ($cat_genre === false) { ?>
-								<p class="genre-film"><?php echo $film['libelle']; ?></p>
-							<?php } ?>
+							<div class="carte-meta">
+								<span class="badge-note"><?php echo number_format($film['moyenne_note'], 1)."🍗"; ?></span>
+								<span class="carte-annee"><?php echo htmlspecialchars($film['annee']); ?></span>
+								<?php if ($cat_genre === false) { ?>
+									<span class="badge-genre"><?php echo htmlspecialchars($film['libelle']); ?></span>
+								<?php } ?>
+							</div>
 						</div>
 					</a>
 				</article>

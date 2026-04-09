@@ -329,6 +329,12 @@ nav a:hover {
   font-size: 0.8rem;
 }
 
+.film-note-phrase {
+  color:#9a9ab0 ;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
 .titre-section {
   display : flex;
   justify-content: center;

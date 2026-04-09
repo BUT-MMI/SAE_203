@@ -62,8 +62,23 @@
 
       <?php if ($notes['nb_commentaires'] > 0) { ?>
         <p class="film-note-moyenne">
-          ⭐ <?php echo number_format($notes['note_moyenne'], 1); ?> / 5
+          🍗 <?php echo number_format($notes['note_moyenne'], 1); ?> / 5
           (<?php echo $notes['nb_commentaires']; ?> avis)
+          <span class="film-note-phrase">
+            <?php
+            if ((number_format($notes['note_moyenne'], 1) > 4.5)) {
+                echo "On pleure sur le poulet ! 🔥🥹";
+            } elseif ((number_format($notes['note_moyenne'], 1) > 3.5)) {
+                echo "C'est quoi ce poulet ? 🍗";
+            } elseif ((number_format($notes['note_moyenne'], 1) > 2.5)) {
+                echo "Poulet. 🐔";
+            } elseif ((number_format($notes['note_moyenne'], 1) > 1.5)) {
+                echo "Poulet mal cuit... 🥶";
+            } else {
+                echo "Salmonellose garantie ! 🤢";
+            }
+            ?>
+          </span>
         </p>
       <?php } else { ?>
         <p class="film-note-moyenne" style="color: #9a9ab0;">Pas encore de note</p>

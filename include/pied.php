@@ -10,6 +10,8 @@
       <p class="footer-description">
         Crousty Movies est votre destination ultime pour découvrir, noter et partager vos films préférés.
       </p>
+
+      */ Ajout de mathis - source : https://developer.mozilla.org/fr/docs/Web/API/Window/scrollTo */
       <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
         ↑ Revenir en haut
       </button>
